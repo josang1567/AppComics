@@ -1,40 +1,26 @@
 package AppComics.model;
 
 public class Comic {
-	protected int numero_capitulos;
+
 	protected String Titulo;
 	protected int Num_paginas;
 	protected boolean Leido;
-	protected String saga;
+	protected String Colecccion;
 
-	
-	private Comic(int numero_capitulos, String titulo, int num_paginas, boolean leido, String saga) {
+	public Comic(String titulo, int num_paginas, boolean leido, String saga) {
 		super();
-		this.numero_capitulos = numero_capitulos;
 		Titulo = titulo;
 		Num_paginas = num_paginas;
 		Leido = leido;
-		this.saga = saga;
+		this.Colecccion = saga;
 	}
 
-		
-	private Comic() {
+	public Comic() {
 		super();
-		this.numero_capitulos = 0;
 		Titulo = "Desconocido";
 		Num_paginas = 0;
 		Leido = false;
-		this.saga = "Desconocido";
-	}
-
-
-
-	public int getNumero_capitulos() {
-		return numero_capitulos;
-	}
-
-	public void setNumero_capitulos(int numero_capitulos) {
-		this.numero_capitulos = numero_capitulos;
+		this.Colecccion = "Desconocido";
 	}
 
 	public String getTitulo() {
@@ -62,11 +48,11 @@ public class Comic {
 	}
 
 	public String getSaga() {
-		return saga;
+		return Colecccion;
 	}
 
 	public void setSaga(String saga) {
-		this.saga = saga;
+		this.Colecccion = saga;
 	}
 
 }

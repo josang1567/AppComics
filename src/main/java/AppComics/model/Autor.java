@@ -11,10 +11,10 @@ public class Autor {
 	protected String dni;
 	protected LocalDateTime fecha_nacimiento;
 	protected String Descripcion;
-	protected List<Saga> obras;
+	protected List<Coleccion> obras;
 
-	private Autor(String nombre, int edad, String dni, LocalDateTime fecha_nacimiento, String descripcion,
-			List<Saga> obras) {
+	public Autor(String nombre, int edad, String dni, LocalDateTime fecha_nacimiento, String descripcion,
+			List<Coleccion> obras) {
 		super();
 		this.nombre = nombre;
 		this.edad = edad;
@@ -24,7 +24,7 @@ public class Autor {
 		this.obras = obras;
 	}
 
-	private Autor() {
+	public Autor() {
 		super();
 		this.nombre = "Desconocido";
 		this.edad = 0;
@@ -74,11 +74,11 @@ public class Autor {
 		Descripcion = descripcion;
 	}
 
-	public List<Saga> getObras() {
+	public List<Coleccion> getObras() {
 		return obras;
 	}
 
-	public void setObras(List<Saga> obras) {
+	public void setObras(List<Coleccion> obras) {
 		this.obras = obras;
 	}
 
