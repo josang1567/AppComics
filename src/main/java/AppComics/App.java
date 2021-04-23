@@ -1,4 +1,4 @@
-package AppComics.app;
+package AppComics;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

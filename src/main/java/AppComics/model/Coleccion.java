@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Coleccion {
 	protected String titulo;
-	protected String Creador;
+	protected String creador;
 	protected int total_paginas;
 	protected List<Comic> comics;
 	protected boolean leido;
@@ -12,7 +12,7 @@ public class Coleccion {
 	public Coleccion(String titulo, String creador, List<Comic> comics) {
 		super();
 		this.titulo = titulo;
-		Creador = creador;
+		creador = creador;
 		this.comics = comics;
 		this.total_paginas = totalpaginas(comics);
 		// por defecto se pone que no has leido la coleccion
@@ -22,14 +22,12 @@ public class Coleccion {
 	public Coleccion() {
 		super();
 		this.titulo = "Desconocido";
-		Creador = "Desconocido";
+		creador = "Desconocido";
 		this.comics = null;
 		this.total_paginas = 0;
 		this.leido = false;
 	}
-	
-	
-	
+
 	public String getTitulo() {
 		return titulo;
 	}
@@ -39,11 +37,11 @@ public class Coleccion {
 	}
 
 	public String getCreador() {
-		return Creador;
+		return creador;
 	}
 
 	public void setCreador(String creador) {
-		Creador = creador;
+		creador = creador;
 	}
 
 	public int getTotal_paginas() {
@@ -86,22 +84,23 @@ public class Coleccion {
 	}
 
 	/***
-	 * revisa el boolean de leido y si es false lo cambia por un no y si es true por un si
+	 * revisa el boolean de leido y si es false lo cambia por un no y si es true por
+	 * un si
 	 */
 	public String leido(boolean leido) {
-		String estadolectura="";
-		if(leido==false) {
-			estadolectura="No";
-		}else {
-			estadolectura="Si";		}
+		String estadolectura = "";
+		if (leido == false) {
+			estadolectura = "No Leido";
+		} else {
+			estadolectura = "Leido";
+		}
 		return estadolectura;
 	}
 
 	@Override
 	public String toString() {
-		return "Saga [titulo=" + titulo + ", Creador=" + Creador + ", total_paginas=" + total_paginas + ", comics="
+		return "Saga [titulo=" + titulo + ", Creador=" + creador + ", total_paginas=" + total_paginas + ", comics="
 				+ comics + ", leido=" + leido(isLeido()) + "]";
 	}
-	
-	
+
 }

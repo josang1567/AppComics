@@ -5,14 +5,15 @@ public class Comic {
 	protected String Titulo;
 	protected int Num_paginas;
 	protected boolean Leido;
-	protected String Colecccion;
 
-	public Comic(String titulo, int num_paginas, boolean leido, String saga) {
+	protected String codigo;
+
+	public Comic(String titulo, int num_paginas, boolean leido, String codigo) {
 		super();
 		Titulo = titulo;
 		Num_paginas = num_paginas;
 		Leido = leido;
-		this.Colecccion = saga;
+		this.codigo = codigo;
 	}
 
 	public Comic() {
@@ -20,7 +21,8 @@ public class Comic {
 		Titulo = "Desconocido";
 		Num_paginas = 0;
 		Leido = false;
-		this.Colecccion = "Desconocido";
+
+		this.codigo = "Desconocido";
 	}
 
 	public String getTitulo() {
@@ -47,12 +49,27 @@ public class Comic {
 		Leido = leido;
 	}
 
-	public String getSaga() {
-		return Colecccion;
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setSaga(String saga) {
-		this.Colecccion = saga;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	/***
+	 * revisa el boolean de leido y si es false lo cambia por un no y si es true por
+	 * un si
+	 */
+
+	public String leido(boolean leido) {
+		String estadolectura = "";
+		if (leido == false) {
+			estadolectura = "No leido";
+		} else {
+			estadolectura = "Leido";
+		}
+		return estadolectura;
 	}
 
 }
