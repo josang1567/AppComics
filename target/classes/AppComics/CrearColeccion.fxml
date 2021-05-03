@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="470.0" style="-fx-background-color: #989392; -fx-border-color: black; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutX="28.0" layoutY="48.0" prefHeight="38.0" prefWidth="195.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2,4;" text="Inserte el titulo del la coleccion:" />
+      <TextArea layoutX="265.0" layoutY="48.0" prefHeight="38.0" prefWidth="175.0" />
+      <Label alignment="CENTER" layoutX="26.0" layoutY="97.0" prefHeight="40.0" prefWidth="195.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2,4;" text="Nombre del creador:" />
+      <TextArea layoutX="265.0" layoutY="97.0" prefHeight="40.0" prefWidth="175.0" />
+      <Button layoutX="109.0" layoutY="317.0" mnemonicParsing="false" text="Guardar Coleccion" />
+      <Label alignment="CENTER" layoutX="26.0" layoutY="150.0" prefHeight="40.0" prefWidth="195.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2,4;" text="Codigo identifatorio" />
+      <TextArea layoutX="265.0" layoutY="150.0" prefHeight="40.0" prefWidth="175.0" />
+      <Label alignment="CENTER" layoutX="4.0" layoutY="5.0" prefHeight="17.0" prefWidth="461.0" style="-fx-background-color: white;" text="Creacion de colección" />
+      <Label alignment="CENTER" layoutX="28.0" layoutY="201.0" prefHeight="40.0" prefWidth="195.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2,4;" text="¿La has leido?" />
+      <TextArea layoutX="265.0" layoutY="201.0" prefHeight="40.0" prefWidth="175.0" />
+      <Label alignment="CENTER" layoutX="28.0" layoutY="255.0" prefHeight="40.0" prefWidth="195.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2,4;" text="Inserte el numero total de paginas" />
+      <TextArea layoutX="265.0" layoutY="255.0" prefHeight="40.0" prefWidth="175.0" />
+   </children>
+</Pane>

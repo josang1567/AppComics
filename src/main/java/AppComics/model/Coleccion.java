@@ -5,25 +5,28 @@ import java.util.List;
 public class Coleccion {
 	protected String titulo;
 	protected String creador;
+	protected String codigo;
 	protected int total_paginas;
-	protected List<Comic> comics;
 	protected boolean leido;
 
-	public Coleccion(String titulo, String creador, List<Comic> comics) {
+	
+	
+	public Coleccion(String titulo, String creador, String codigo, int total_paginas, boolean leido) {
 		super();
 		this.titulo = titulo;
-		creador = creador;
-		this.comics = comics;
-		this.total_paginas = totalpaginas(comics);
-		// por defecto se pone que no has leido la coleccion
-		this.leido = false;
+		this.creador = creador;
+		this.codigo = codigo;
+		this.total_paginas = total_paginas;
+		this.leido = leido;
 	}
+
+	
 
 	public Coleccion() {
 		super();
 		this.titulo = "Desconocido";
-		creador = "Desconocido";
-		this.comics = null;
+		this.creador = "Desconocido";
+		this.codigo="00000";
 		this.total_paginas = 0;
 		this.leido = false;
 	}
@@ -41,7 +44,7 @@ public class Coleccion {
 	}
 
 	public void setCreador(String creador) {
-		creador = creador;
+		this.creador = creador;
 	}
 
 	public int getTotal_paginas() {
@@ -52,13 +55,18 @@ public class Coleccion {
 		this.total_paginas = total_paginas;
 	}
 
-	public List<Comic> getComics() {
-		return comics;
+
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setComics(List<Comic> comics) {
-		this.comics = comics;
+
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
+
+
 
 	public boolean isLeido() {
 		return leido;
@@ -97,10 +105,5 @@ public class Coleccion {
 		return estadolectura;
 	}
 
-	@Override
-	public String toString() {
-		return "Saga [titulo=" + titulo + ", Creador=" + creador + ", total_paginas=" + total_paginas + ", comics="
-				+ comics + ", leido=" + leido(isLeido()) + "]";
-	}
-
+	
 }

@@ -8,11 +8,10 @@ import AppComics.model.ComicDao;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 
 
 public class ComicController {
@@ -21,6 +20,7 @@ public class ComicController {
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }
+    
     
     @FXML
     private Label TituloLabel;
@@ -38,6 +38,7 @@ public class ComicController {
     private TableView<Comic> tablacomics;
     @FXML
     private TableColumn<Comic, String> ComicColumna;
+   
     
     
     @FXML
@@ -59,6 +60,7 @@ public class ComicController {
   			v.setValue(cadacomic.getValue().getTitulo());
   			return v;
   		});
+    	 
      }
    
     

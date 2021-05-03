@@ -5,25 +5,31 @@ public class Comic {
 	protected String Titulo;
 	protected int Num_paginas;
 	protected boolean Leido;
-
 	protected String codigo;
-
-	public Comic(String titulo, int num_paginas, boolean leido, String codigo) {
+	protected String codigo_coleccion;
+ 
+	
+	
+	public Comic(String titulo, int num_paginas, boolean leido, String codigo, String codigo_coleccion) {
 		super();
 		Titulo = titulo;
 		Num_paginas = num_paginas;
 		Leido = leido;
 		this.codigo = codigo;
+		this.codigo_coleccion = codigo_coleccion;
 	}
 
+	
+	
 	public Comic() {
-		super();
 		Titulo = "Desconocido";
 		Num_paginas = 0;
 		Leido = false;
-
-		this.codigo = "Desconocido";
+		this.codigo = "00000";
+		this.codigo_coleccion = "00000";
 	}
+
+
 
 	public String getTitulo() {
 		return Titulo;
@@ -56,6 +62,16 @@ public class Comic {
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
+
+	public String getCodigo_coleccion() {
+		return codigo_coleccion;
+	}
+
+	public void setCodigo_coleccion(String codigo_coleccion) {
+		this.codigo_coleccion = codigo_coleccion;
+	}
+
+
 
 	/***
 	 * revisa el boolean de leido y si es false lo cambia por un no y si es true por
