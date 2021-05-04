@@ -32,11 +32,24 @@ public class AutorSceneController {
 	@FXML
 	private TableColumn<Autor, String> nombreColumna;
 
+	// ir a todas las colecciones
 	@FXML
-    private void switchTocolecciones() throws IOException {
-        App.setRoot("secondary");
-    }
-	
+	private void switchToColecciones() throws IOException {
+		App.setRoot("secondary");
+	}
+
+	// ir a todos los autores
+	@FXML
+	private void switchToAutores() throws IOException {
+		App.setRoot("AutorScene");
+	}
+
+	// ir a los comics
+	@FXML
+	private void switchToComics() throws IOException {
+		App.setRoot("primary");
+	}
+
 	@FXML
 	protected void initialize() {
 		System.out.println("Cargando...");
@@ -73,7 +86,7 @@ public class AutorSceneController {
 			DniLabel.setText("");
 			NombreLabel.setText("");
 			DescripcionLabel.setText("");
-			ObrasLabel.setText( "");
+			ObrasLabel.setText("");
 		}
 	}
 }

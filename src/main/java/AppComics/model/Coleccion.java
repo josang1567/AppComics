@@ -76,20 +76,6 @@ public class Coleccion {
 		this.leido = leido;
 	}
 
-	/***
-	 * recorre la lista de comics y calcula el total de paginas
-	 * 
-	 * @param comics
-	 * @return
-	 */
-	public int totalpaginas(List<Comic> comics) {
-		int total = 0;
-		for (Comic comic : comics) {
-			total += comic.getNum_paginas();
-		}
-
-		return total;
-	}
 
 	/***
 	 * revisa el boolean de leido y si es false lo cambia por un no y si es true por

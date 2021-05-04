@@ -5,17 +5,19 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="299.0" prefWidth="442.0" style="-fx-background-color: #989392;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="404.0" style="-fx-background-color: #989392;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppComics.CrearComicController">
    <children>
-      <Label alignment="CENTER" prefHeight="17.0" prefWidth="442.0" style="-fx-background-color: white;" text="Creacion de comic" />
-      <Label alignment="CENTER" layoutX="9.0" layoutY="46.0" prefHeight="38.0" prefWidth="177.0" style="-fx-background-color: white;" text="Inserte el titulo del comic:" />
-      <TextArea layoutX="215.0" layoutY="46.0" prefHeight="39.0" prefWidth="218.0" />
-      <Label alignment="CENTER" layoutX="9.0" layoutY="97.0" prefHeight="39.0" prefWidth="177.0" style="-fx-background-color: white;" text="Inserte el numero de paginas " />
-      <TextArea layoutX="215.0" layoutY="97.0" prefHeight="39.0" prefWidth="218.0" />
-      <Label alignment="CENTER" layoutX="9.0" layoutY="145.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="¿Lo has leido?" />
-      <TextArea layoutX="215.0" layoutY="145.0" prefHeight="40.0" prefWidth="218.0" />
-      <Button layoutX="175.0" layoutY="266.0" mnemonicParsing="false" text="Guardar Comic" />
-      <Label alignment="CENTER" layoutX="9.0" layoutY="199.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="Codigo identifatorio" />
-      <TextArea layoutX="215.0" layoutY="198.0" prefHeight="40.0" prefWidth="218.0" />
+      <Label alignment="CENTER" prefHeight="17.0" prefWidth="404.0" style="-fx-background-color: white;" text="Creacion de comic" />
+      <Label alignment="CENTER" layoutY="46.0" prefHeight="38.0" prefWidth="177.0" style="-fx-background-color: white;" text="Inserte el titulo del comic:" />
+      <Label alignment="CENTER" layoutY="97.0" prefHeight="39.0" prefWidth="177.0" style="-fx-background-color: white;" text="Inserte el numero de paginas " />
+      <Label alignment="CENTER" layoutY="145.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="¿Lo has leido?" />
+      <Label alignment="CENTER" layoutY="199.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="Codigo identifatorio" />
+      <Label alignment="CENTER" layoutX="1.0" layoutY="261.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="Codigo Colección" />
+      <TextArea layoutX="214.0" layoutY="47.0" prefHeight="39.0" prefWidth="189.0" />
+      <TextArea layoutX="215.0" layoutY="98.0" prefHeight="39.0" prefWidth="189.0" />
+      <TextArea layoutX="215.0" layoutY="146.0" prefHeight="40.0" prefWidth="189.0" />
+      <TextArea layoutX="215.0" layoutY="199.0" prefHeight="40.0" prefWidth="189.0" />
+      <TextArea layoutX="215.0" layoutY="261.0" prefHeight="40.0" prefWidth="189.0" />
+      <Button layoutX="153.0" layoutY="311.0" mnemonicParsing="false" onKeyPressed="#switchToComics" onTouchReleased="#switchToComics" text="Guardar Comic" />
    </children>
 </Pane>

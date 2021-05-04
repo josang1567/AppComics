@@ -11,6 +11,9 @@ import java.util.List;
 import AppComics.utils.conexion;
 
 public class ColeccionDAO extends Coleccion {
+	//codigo usado para mostrar todas las colecciones
+	private final static String GETALL="SELECT titulo,creador,codigo ,total_paginas,leido from coleccion";
+	
 	// codigo usado para mostrar los comics seguin el codigo
 
 	private final static String GETBYCODIGO = "SELECT titulo,creador,codigo ,total_paginas,leido FROM  Coleccion WHERE codigo=";
@@ -34,7 +37,16 @@ public class ColeccionDAO extends Coleccion {
 	public ColeccionDAO() {
 		super();
 	}
+	public ColeccionDAO(Coleccion c) {
+		this.titulo = c.titulo;
+		this.creador = c.creador;
+		this.codigo = c.codigo;
+		this.total_paginas = c.total_paginas;
+		this.leido = c.leido;
+	}
 
+	
+	
 	public ColeccionDAO(String codigo) {
 		// getByID from mariaDB
 		// Conexion
@@ -139,13 +151,42 @@ public class ColeccionDAO extends Coleccion {
 		
 		return result;
 	}
-
-	public ColeccionDAO(Coleccion c) {
-		this.titulo = c.titulo;
-		this.creador = c.creador;
-		this.codigo = c.codigo;
-		this.total_paginas = c.total_paginas;
-		this.leido = c.leido;
+	
+	public static List<Coleccion> buscartodos() {
+		List<Coleccion> result=new ArrayList<Coleccion>();
+		Connection con = conexion.getConexion();
+		if (con != null) {
+			try {
+				PreparedStatement q=con.prepareStatement(GETALL);
+				ResultSet rs=q.executeQuery();
+				while(rs.next()) {
+					//es que hay al menos un resultado
+					Coleccion a=new Coleccion();
+					a.setCreador(rs.getString("creador"));
+					a.setLeido(rs.getBoolean("leido"));
+					a.setCodigo(rs.getString("codigo"));
+					a.setTitulo(rs.getString("titulo"));
+					a.setTotal_paginas(rs.getInt("total_paginas"));
+					result.add(a);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
 	}
+	
 
+	
+	public static List<Coleccion> listartodos(){
+		List<Coleccion> listaColeccion= new ArrayList<Coleccion>();
+		listaColeccion.add(new Coleccion("Vengadores"," stan lee", "123d2", 554, false));
+		listaColeccion.add(new Coleccion("popeye", "mariano", "9493j", 23, false));
+		listaColeccion.add(new Coleccion("batman", "batman", "2343", 32, true));
+		listaColeccion.add(new Coleccion("injustice", "anonimo", "4949", 32, false));
+		
+		return listaColeccion;
+	}
 }

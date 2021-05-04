@@ -25,6 +25,7 @@ public class AutorDAO extends Autor {
 
 	// seleccionar por nombre
 	private final static String SELECTBYNAME = "SELECT * FROM autor WHERE  nombre like ?";
+	private final static String SELECTBYDNI = "SELECT * FROM autor WHERE  dni like ?";
 
 	public AutorDAO(String nombre, int edad, String dni, String descripcion, List<Coleccion> obras) {
 		super(nombre, edad, dni, descripcion, obras);
@@ -151,12 +152,48 @@ public class AutorDAO extends Autor {
 		
 		return result;
 	}
-
+	public static Autor buscarPorDni(String dni) {
+		Autor nuevo= new Autor();
+		Connection con= conexion.getConexion();
+		if(con!=null) {
+			
+				PreparedStatement q;
+				try {
+					q = con.prepareStatement(SELECTBYDNI);
+					q.setString(1, "%"+dni+"%");
+					ResultSet rs=q.executeQuery();
+					while(rs.next()) {
+						//es que hay al menos un resultado
+						
+						nuevo.setNombre(rs.getString("nombre"));
+						nuevo.setEdad(rs.getInt("edad"));
+						nuevo.setDni(rs.getString("dni"));
+						nuevo.setDescripcion(rs.getString("descripcion"));
+						nuevo.setObras(null);
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+									
+			
+		}
+		
+		
+		
+		return nuevo;
+		
+	}
 	
 	public static List<Autor> listartodos() {
+		List<Coleccion> listaColeccion= new ArrayList<Coleccion>();
+		listaColeccion.add(new Coleccion("Vengadores"," stan lee", "123d2", 554, false));
+		listaColeccion.add(new Coleccion("popeye", "mariano", "9493j", 23, false));
+		
+		
 		List<Autor> listaautores = new ArrayList<>();
-		listaautores.add(new Autor("Stan lee", 80, "11111s", "Creador de varios personajes de marvel comics", null));
-		listaautores.add(new Autor("manolo", 80, "111441d", "Creador de varios personajes de marvel comics", null));
+		listaautores.add(new Autor("Stan lee", 80, "11111s", "Creador de varios personajes de marvel comics", listaColeccion));
+		listaautores.add(new Autor("manolo", 80, "111441d", "Creador de varios personajes de marvel comics", listaColeccion));
 
 		return listaautores;
 	}

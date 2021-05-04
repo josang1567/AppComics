@@ -126,7 +126,7 @@ public class ComicDao extends Comic {
 				q.setString(1, "%"+nombre+"%");
 				ResultSet rs=q.executeQuery();
 				while(rs.next()) {
-					//es que hay al menos un resultado
+					
 					Comic a=new Comic();
 					a.setTitulo(rs.getString("Titulo"));
 					a.setCodigo(rs.getString("codigo"));

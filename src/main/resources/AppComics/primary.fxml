@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -18,16 +19,13 @@
          <menus>
             <Menu mnemonicParsing="false" text="Archivos">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Autores" />
-                  <MenuItem mnemonicParsing="false" text="Colecciones" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToAutores" text="Autores" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToColecciones" text="Colecciones" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Editar">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Añadir Saga" />
-                  <MenuItem mnemonicParsing="false" text="Eliminar Saga" />
-                  <MenuItem mnemonicParsing="false" text="Añadir Comic" />
-                  <MenuItem mnemonicParsing="false" text="Eliminar Comic" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToCrearComic" text="Añadir Comic" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Ayuda">
@@ -64,11 +62,14 @@
                   </Label>
                   <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="57.0" prefHeight="18.0" prefWidth="110.0" text="Numero de paginas:" />
                   <Label alignment="TOP_RIGHT" layoutX="34.0" layoutY="107.0" prefHeight="18.0" prefWidth="98.0" text="Estado de lectura:" />
-                  <Label fx:id="TituloLabel" layoutX="157.0" layoutY="16.0" prefHeight="7.0" prefWidth="28.0" text="Label" />
-                  <Label fx:id="Num_paginasLabel" layoutX="157.0" layoutY="58.0" text="Label" />
-                  <Label fx:id="LeidoLabel" layoutX="157.0" layoutY="107.0" text="Label" />
-                  <Label alignment="TOP_RIGHT" layoutX="11.0" layoutY="151.0" prefHeight="18.0" prefWidth="119.0" text="Codigo identificatorio" />
-                  <Label fx:id="CodigoLabel" layoutX="157.0" layoutY="151.0" text="Label" />
+                  <Label alignment="TOP_RIGHT" layoutX="11.0" layoutY="151.0" prefHeight="18.0" prefWidth="119.0" text="Codigo identificatorio:" />
+                  <Label alignment="TOP_RIGHT" layoutX="11.0" layoutY="204.0" prefHeight="18.0" prefWidth="119.0" text="Codigo coleccion:" />
+                  <Label fx:id="TituloLabel" layoutX="157.0" layoutY="16.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
+                  <Label fx:id="Num_paginasLabel" layoutX="157.0" layoutY="58.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
+                  <Label fx:id="LeidoLabel" layoutX="157.0" layoutY="107.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
+                  <Label fx:id="CodigoLabel" layoutX="157.0" layoutY="151.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
+                  <Label fx:id="Codigo_coleccionLabel" layoutX="157.0" layoutY="205.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
+                  <Button layoutX="84.0" layoutY="236.0" mnemonicParsing="false" onAction="#eliminarComic" text="Eliminar Comic" />
                </children>
             </Pane>
          </items>
