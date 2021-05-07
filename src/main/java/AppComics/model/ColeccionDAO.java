@@ -19,7 +19,7 @@ public class ColeccionDAO extends Coleccion {
 	private final static String GETBYCODIGO = "SELECT titulo,creador,codigo ,total_paginas,leido FROM  Coleccion WHERE codigo=";
 
 	// string usado para insertar comnics
-	private final static String INSERTUPDATE = "INSERT INTO  comic(titulo,creador,codigo ,total_paginas,leido) "
+	private final static String INSERTUPDATE = "INSERT INTO  comic(titulo, creador, codigo ,total_paginas, leido) "
 			+ "VALUES (?,?,?,?,?) " + "ON DUPLICATE KEY UPDATE titulo=?,creador=?,total_paginas=?,leido=?";
 
 	// eliminar
@@ -92,7 +92,7 @@ public class ColeccionDAO extends Coleccion {
 						q.setString(6, this.titulo);
 						q.setString(7, this.creador);
 						q.setInt(8, this.total_paginas);
-						q.setBoolean(9, this.leido);
+						q.setBoolean(9, false);
 						rs =q.executeUpdate();		
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
@@ -179,7 +179,7 @@ public class ColeccionDAO extends Coleccion {
 	}
 	
 
-	
+	/*
 	public static List<Coleccion> listartodos(){
 		List<Coleccion> listaColeccion= new ArrayList<Coleccion>();
 		listaColeccion.add(new Coleccion("Vengadores"," stan lee", "123d2", 554, false));
@@ -188,5 +188,5 @@ public class ColeccionDAO extends Coleccion {
 		listaColeccion.add(new Coleccion("injustice", "anonimo", "4949", 32, false));
 		
 		return listaColeccion;
-	}
+	}*/
 }

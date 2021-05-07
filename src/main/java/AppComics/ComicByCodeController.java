@@ -3,6 +3,7 @@ package AppComics;
 import java.io.IOException;
 import java.util.List;
 
+import AppComics.model.Coleccion;
 import AppComics.model.Comic;
 import AppComics.model.ComicDao;
 import javafx.beans.property.SimpleStringProperty;
@@ -13,9 +14,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.collections.FXCollections;
 
-public class ComicController {
+public class ComicByCodeController {
 	static ComicDao cd = new ComicDao();
-
+	static String code="";
 	// ir a todas las colecciones
 	@FXML
 	private void switchToColecciones() throws IOException {
@@ -64,13 +65,17 @@ public class ComicController {
 		muestraInfo(null);
 		configuraTabla();
 		// Cargar de la base de datos!!!!!
-		List<Comic> todas = ComicDao.mostrartodos();
+		
+		List<Comic> todas = ComicDao.buscaPorcoleccion((String) App.infoShared);
 		tablacomics.setItems(FXCollections.observableArrayList(todas));
 		tablacomics.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 			muestraInfo(newValue);
 		});
 	}
-
+	
+	
+	
+	
 	private void configuraTabla() {
 
 		ComicColumna.setCellValueFactory(cadacomic -> {
@@ -105,7 +110,7 @@ public class ComicController {
 	
 	@FXML
 	private void eliminar() throws IOException {
-		cd.setCodigo(this.Codigo_coleccionLabel.getText());
+		
 		
 		cd.eliminar(CodigoLabel.getText());
 		App.setRoot("primary");

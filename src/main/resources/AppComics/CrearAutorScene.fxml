@@ -5,17 +5,17 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="391.0" prefWidth="421.0" style="-fx-background-color: #989392; -fx-border-color: black; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="391.0" prefWidth="421.0" style="-fx-background-color: #989392; -fx-border-color: black; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppComics.CrearAutorController">
    <children>
       <Label alignment="CENTER" layoutX="4.0" layoutY="4.0" prefHeight="17.0" prefWidth="412.0" style="-fx-background-color: white;" text="Creacion de comic" />
       <Label alignment="CENTER" layoutX="42.0" layoutY="44.0" prefHeight="38.0" prefWidth="159.0" style="-fx-background-color: white;" text="Inserte el nombre del autor:" />
-      <TextArea layoutX="237.0" layoutY="43.0" prefHeight="17.0" prefWidth="159.0" />
-      <Label alignment="CENTER" layoutX="42.0" layoutY="230.0" prefHeight="39.0" prefWidth="159.0" style="-fx-background-color: white;" text="Inserte el codigo del autor:" />
-      <TextArea layoutX="238.0" layoutY="115.0" prefHeight="39.0" prefWidth="159.0" />
-      <Label alignment="CENTER" layoutX="42.0" layoutY="176.0" prefHeight="40.0" prefWidth="159.0" style="-fx-background-color: white;" text="¿Lo has leido?" />
-      <TextArea layoutX="237.0" layoutY="176.0" prefHeight="40.0" prefWidth="159.0" />
-      <Button layoutX="162.0" layoutY="302.0" mnemonicParsing="false" text="Guardar Comic" />
+      <TextArea fx:id="nombretext" layoutX="237.0" layoutY="43.0" prefHeight="17.0" prefWidth="159.0" />
+      <Label alignment="CENTER" layoutX="42.0" layoutY="230.0" prefHeight="39.0" prefWidth="159.0" style="-fx-background-color: white;" text="Descripcion" />
+      <TextArea fx:id="dnitext" layoutX="238.0" layoutY="115.0" prefHeight="39.0" prefWidth="159.0" />
+      <Label alignment="CENTER" layoutX="42.0" layoutY="176.0" prefHeight="40.0" prefWidth="159.0" style="-fx-background-color: white;" text="edad" />
+      <TextArea fx:id="edadtext" layoutX="237.0" layoutY="176.0" prefHeight="40.0" prefWidth="159.0" />
+      <Button layoutX="162.0" layoutY="302.0" mnemonicParsing="false" onAction="#guardarautor" text="Guardar Comic" />
       <Label alignment="CENTER" layoutX="42.0" layoutY="115.0" prefHeight="40.0" prefWidth="159.0" style="-fx-background-color: white;" text="Codigo identifatorio" />
-      <TextArea layoutX="238.0" layoutY="230.0" prefHeight="40.0" prefWidth="159.0" />
+      <TextArea fx:id="DescripcionText" layoutX="238.0" layoutY="230.0" prefHeight="40.0" prefWidth="159.0" />
    </children>
 </Pane>

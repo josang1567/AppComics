@@ -4,19 +4,19 @@ package AppComics;
 
 import java.io.IOException;
 import java.util.List;
-
 import javafx.beans.property.SimpleStringProperty;
 import AppComics.model.Coleccion;
 import AppComics.model.ColeccionDAO;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class ColeccionesController {
-
+	
 	@FXML
 	private Label TituloLabel;
 
@@ -49,7 +49,7 @@ public class ColeccionesController {
 		App.setRoot("AutorScene");
 	}
 
-	// ir a crear autor
+	// ir a crear coleccion
 	@FXML
 	private void SwitchToCrearColeccion() throws IOException {
 		App.setRoot("CrearColeccion");
@@ -60,6 +60,13 @@ public class ColeccionesController {
 	private void switchToComics() throws IOException {
 		App.setRoot("primary");
 	}
+	// ir a los comics de este codigo
+		@FXML
+		private void switchToComicsbycodigo() throws IOException {
+			App.infoShared=codigoLabel.getText();
+			App.setRoot("ComicsByCode");
+			
+		}
 	
 	@FXML
 	private void eliminarColeccion()throws IOException{
@@ -72,7 +79,7 @@ public class ColeccionesController {
 		muestraInfo(null);
 		configuraTabla();
 		// Cargar de la base de datos!!!!!
-		List<Coleccion> todas = ColeccionDAO.listartodos();
+		List<Coleccion> todas = ColeccionDAO.buscartodos();
 		tablaColecciones.setItems(FXCollections.observableArrayList(todas));
 		tablaColecciones.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue)->{
 			muestraInfo(newValue);
@@ -104,6 +111,31 @@ public class ColeccionesController {
 			EstadoDeLecturaLabel.setText("Desconocido");
 			codigoLabel.setText("Desconocido");
 		}
+	}
+	@FXML
+	private void ayuda() {
+	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	    alert.setHeaderText(null);
+	    alert.setTitle("Visitar web");
+	    alert.setContentText("https://www.google.es/?gws_rd=cr&ei=6b1BUqa_HoTZtAbMnIDgBg");
+	    alert.showAndWait();
+	}
+	@FXML
+	private void comoEditar() {
+	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	    alert.setHeaderText(null);
+	    alert.setTitle("Editar");
+	    alert.setContentText("Para editar los datos de una coleccion ya existente debes ir a crear "
+	    		+ "y si el codigo coincide con una ya existente se sobreescribira encima.");
+	    alert.showAndWait();
+	}
+	@FXML
+	private void infocolecciones() {
+	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	    alert.setHeaderText(null);
+	    alert.setTitle("Informacion basica:");
+	    alert.setContentText("En esta parte se muestra la informacion de las distintas colecciones");
+	    alert.showAndWait();
 	}
 
 }

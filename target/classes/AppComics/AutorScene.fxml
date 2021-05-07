@@ -23,15 +23,15 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Editar">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Añadir Autor" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchtocrear" text="Añadir Autor" />
                   <MenuItem mnemonicParsing="false" text="Eliminar Autor" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Ayuda">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Informacion basica de las sagas" />
-                  <MenuItem mnemonicParsing="false" text="Editar Sagas" />
-                  <MenuItem mnemonicParsing="false" text="Sagas favoritas" />
+                  <MenuItem mnemonicParsing="false" onAction="#infoautores" text="Informacion basica de las colecciones" />
+                  <MenuItem mnemonicParsing="false" onAction="#ayuda" text="Mas ayuda" />
+                  <MenuItem mnemonicParsing="false" onAction="#comoEditar" text="Como editar" />
                </items>
             </Menu>
          </menus>
@@ -49,18 +49,16 @@
             </TableView>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #989392;">
                <children>
-                  <Label fx:id="NombreLabel" layoutX="212.0" layoutY="27.0" text="Label" />
-                  <Label layoutX="57.0" layoutY="266.0" prefHeight="22.0" prefWidth="38.0" style="-fx-background-color: #F7EEEC; -fx-border-color: red; -fx-border-width: 2.5;" text="Edad:" />
-                  <Label fx:id="EdadLabel" layoutX="206.0" layoutY="269.0" text="Label" />
-                  <Label alignment="TOP_RIGHT" layoutX="50.0" layoutY="333.0" prefHeight="22.0" prefWidth="28.0" style="-fx-background-color: #F7EEEC; -fx-border-color: red; -fx-border-width: 2.5;" text="Dni:" />
-                  <Label fx:id="DniLabel" layoutX="206.0" layoutY="336.0" text="Label" />
-                  <Label layoutX="25.0" layoutY="87.0" prefHeight="26.0" prefWidth="110.0" style="-fx-background-color: #F7EEEC; -fx-border-color: red; -fx-border-width: 2.5;" text="Fecha nacimiento:" />
-                  <Label fx:id="Fecha_NacimientoLabel" layoutX="212.0" layoutY="170.0" text="Label" />
-                  <Label layoutX="38.0" layoutY="168.0" prefHeight="18.0" prefWidth="69.0" style="-fx-background-color: #F7EEEC; -fx-border-color: red; -fx-border-width: 2.5;" text="Descripcion:" />
-                  <Label fx:id="DescripcionLabel" layoutX="226.0" layoutY="92.0" text="Label" />
-                  <Label layoutX="41.0" layoutY="368.0" style="-fx-background-color: #F7EEEC; -fx-border-color: red; -fx-border-width: 2.5;" text="Obras conocidas:" />
-                  <Label fx:id="ObrasLabel" layoutX="212.0" layoutY="370.0" text="Label" />
-                  <Label layoutX="54.0" layoutY="24.0" prefHeight="22.0" prefWidth="54.0" style="-fx-background-color: #F7EEEC; -fx-border-color: red; -fx-border-width: 2.5;" text="Nombre:" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="142.0" prefHeight="23.0" prefWidth="103.0" style="-fx-background-color: #F7EEEC; -fx-border-color: black; -fx-border-width: 2.5;" text="Edad:" />
+                  <Label fx:id="EdadLabel" layoutX="187.0" layoutY="145.0" prefHeight="19.0" prefWidth="81.0" style="-fx-background-color: white; -fx-border-color: black;" text="Label" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="31.0" layoutY="189.0" prefHeight="23.0" prefWidth="103.0" style="-fx-background-color: #F7EEEC; -fx-border-color: black; -fx-border-width: 2.5;" text="Dni:" />
+                  <Label fx:id="DniLabel" layoutX="187.0" layoutY="192.0" prefHeight="19.0" prefWidth="81.0" style="-fx-background-color: white; -fx-border-color: black;" text="Label" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="31.0" layoutY="245.0" prefHeight="23.0" prefWidth="103.0" style="-fx-background-color: #F7EEEC; -fx-border-color: black; -fx-border-width: 2.5;" text="Descripcion:" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="298.0" prefHeight="23.0" prefWidth="103.0" style="-fx-background-color: #F7EEEC; -fx-border-color: black; -fx-border-width: 2.5;" text="Obras conocidas:" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="31.0" layoutY="90.0" prefHeight="23.0" prefWidth="103.0" style="-fx-background-color: #F7EEEC; -fx-border-color: black; -fx-border-width: 2.5;" text="Nombre:" />
+                  <Label fx:id="NombreLabel" layoutX="183.0" layoutY="94.0" prefHeight="19.0" prefWidth="84.0" style="-fx-background-color: white; -fx-border-color: black;" text="Label" />
+                  <Label fx:id="ObrasLabel" layoutX="184.0" layoutY="301.0" style="-fx-background-color: white;" text="Label" />
+                  <Label fx:id="DescripcionLabel" layoutX="185.0" layoutY="247.0" style="-fx-background-color: white;" text="Label" />
                </children>
             </Pane>
          </items>

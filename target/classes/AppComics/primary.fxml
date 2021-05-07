@@ -30,9 +30,9 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Ayuda">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Informacion basica de las sagas" />
-                  <MenuItem mnemonicParsing="false" text="Editar Sagas" />
-                  <MenuItem mnemonicParsing="false" text="Sagas favoritas" />
+                  <MenuItem mnemonicParsing="false" onAction="#infocomics" text="Informacion basica de laos comics" />
+                  <MenuItem mnemonicParsing="false" onAction="#comoEditar" text="Editar comics" />
+                  <MenuItem mnemonicParsing="false" onAction="#ayuda" text="Mas ayuda" />
                </items>
             </Menu>
          </menus>
@@ -69,7 +69,7 @@
                   <Label fx:id="LeidoLabel" layoutX="157.0" layoutY="107.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
                   <Label fx:id="CodigoLabel" layoutX="157.0" layoutY="151.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
                   <Label fx:id="Codigo_coleccionLabel" layoutX="157.0" layoutY="205.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
-                  <Button layoutX="84.0" layoutY="236.0" mnemonicParsing="false" onAction="#eliminarComic" text="Eliminar Comic" />
+                  <Button layoutX="84.0" layoutY="236.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar Comic" />
                </children>
             </Pane>
          </items>

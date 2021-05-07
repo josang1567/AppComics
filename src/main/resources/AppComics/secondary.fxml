@@ -22,6 +22,7 @@
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#switchToAutores" text="Autores" />
                   <MenuItem mnemonicParsing="false" onAction="#switchToColecciones" text="Colecciones" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToComics" text="Comics" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Editar">
@@ -31,9 +32,9 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Ayuda">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Informacion basica de las sagas" />
-                  <MenuItem mnemonicParsing="false" text="Editar Sagas" />
-                  <MenuItem mnemonicParsing="false" text="Sagas favoritas" />
+                  <MenuItem mnemonicParsing="false" onAction="#infocolecciones" text="Informacion basica de las sagas" />
+                  <MenuItem mnemonicParsing="false" onAction="#comoEditar" text="Editar Sagas" />
+                  <MenuItem mnemonicParsing="false" onAction="#ayuda" text="Mas ayuda" />
                </items>
             </Menu>
          </menus>
@@ -69,7 +70,7 @@
                   <Label alignment="TOP_RIGHT" layoutX="11.0" layoutY="185.0" prefHeight="18.0" prefWidth="119.0" text="Codigo identificatorio:" />
                   <Label layoutX="87.0" layoutY="105.0" text="Creador:" />
                   <Label fx:id="CreadorLabel" layoutX="157.0" layoutY="105.0" text="Label" />
-                  <Button fx:id="codigoLabel" layoutX="145.0" layoutY="182.0" mnemonicParsing="false" onAction="#switchToComics" style="-fx-background-color: #989392;" text="Button">
+                  <Button fx:id="codigoLabel" layoutX="145.0" layoutY="182.0" mnemonicParsing="false" onAction="#switchToComicsbycodigo" style="-fx-background-color: #989392;" text="Button">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

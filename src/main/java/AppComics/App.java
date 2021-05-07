@@ -13,6 +13,7 @@ import java.io.IOException;
  */
 public class App extends Application {
 
+	public static Object infoShared;
     private static Scene scene;
 
     @Override
