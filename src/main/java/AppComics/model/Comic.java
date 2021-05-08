@@ -5,31 +5,37 @@ public class Comic {
 	protected String Titulo;
 	protected int Num_paginas;
 	protected boolean Leido;
-	protected String codigo;
-	protected String codigo_coleccion;
- 
+	protected String titulo_coleccion;
+	protected boolean localizacion;
+	protected boolean propiedad;
+	protected String tapa;
+	protected String tipo;
+
 	
 	
-	public Comic(String titulo, int num_paginas, boolean leido, String codigo, String codigo_coleccion) {
+	public Comic(String titulo, int num_paginas, boolean leido, String titulo_coleccion, boolean localizacion,
+			boolean propiedad, String tapa, String tipo) {
 		super();
 		Titulo = titulo;
 		Num_paginas = num_paginas;
 		Leido = leido;
-		this.codigo = codigo;
-		this.codigo_coleccion = codigo_coleccion;
+		this.titulo_coleccion = titulo_coleccion;
+		this.localizacion = localizacion;
+		this.propiedad = propiedad;
+		this.tapa = tapa;
+		this.tipo = tipo;
 	}
 
-	
-	
 	public Comic() {
-		Titulo = "Desconocido";
-		Num_paginas = 0;
-		Leido = false;
-		this.codigo = "00000";
-		this.codigo_coleccion = "00000";
+		this.Titulo = "Desconocido";
+		this.Num_paginas = 0;
+		this.Leido = false;
+		this.titulo_coleccion = "00000";
+		this.localizacion=true;
+		this.propiedad=false;
+		this.tapa="blanda";
+		this.tipo="comic";
 	}
-
-
 
 	public String getTitulo() {
 		return Titulo;
@@ -55,23 +61,45 @@ public class Comic {
 		Leido = leido;
 	}
 
-	public String getCodigo() {
-		return codigo;
+	public String getTitulo_coleccion() {
+		return titulo_coleccion;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setTitulo_coleccion(String titulo_coleccion) {
+		this.titulo_coleccion = titulo_coleccion;
 	}
 
-	public String getCodigo_coleccion() {
-		return codigo_coleccion;
+	public boolean isLocalizacion() {
+		return localizacion;
 	}
 
-	public void setCodigo_coleccion(String codigo_coleccion) {
-		this.codigo_coleccion = codigo_coleccion;
+	public void setLocalizacion(boolean localizacion) {
+		this.localizacion = localizacion;
 	}
 
+	public boolean isPropiedad() {
+		return propiedad;
+	}
 
+	public void setPropiedad(boolean propiedad) {
+		this.propiedad = propiedad;
+	}
+
+	public String getTapa() {
+		return tapa;
+	}
+
+	public void setTapa(String tapa) {
+		this.tapa = tapa;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
 	/***
 	 * revisa el boolean de leido y si es false lo cambia por un no y si es true por
@@ -86,6 +114,25 @@ public class Comic {
 			estadolectura = "Leido";
 		}
 		return estadolectura;
+	}
+	public String localizacion(boolean localizacion) {
+		String estado="";
+		if(localizacion==true) {
+			estado="En casa";
+		}else {
+			estado="Prestado";
+		}
+		return estado;
+	}
+	
+	public String propiedad(boolean propiedad) {
+		String estado="";
+		if(propiedad==true) {
+			estado="En posecion";
+		}else if(propiedad==false) {
+			estado="En Lista de deseos";
+		}
+		return estado;
 	}
 
 }

@@ -16,7 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class ColeccionesController {
+public class ColeccionesbyAutorController {
 	static ColeccionDAO coleccion= new ColeccionDAO();
 	@FXML
 	private Button Titulobutton;
@@ -72,7 +72,7 @@ public class ColeccionesController {
 		muestraInfo(null);
 		configuraTabla();
 		// Cargar de la base de datos!!!!!
-		List<Coleccion> todas = ColeccionDAO.buscartodos();
+		List<Coleccion> todas = ColeccionDAO.buscaPorNombre(Utils.dato.toString());
 		tablaColecciones.setItems(FXCollections.observableArrayList(todas));
 		tablaColecciones.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue)->{
 			muestraInfo(newValue);
@@ -94,9 +94,11 @@ public class ColeccionesController {
 		if(c!=null) {
 			Titulobutton.setText(c.getTitulo());
 			CreadorLabel.setText(c.getCreador());
+			
 		}else {
 			Titulobutton.setText("Desconocido");
 			CreadorLabel.setText("Desconocido");
+			
 		}
 	}
 	@FXML

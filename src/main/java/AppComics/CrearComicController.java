@@ -24,9 +24,16 @@ public class CrearComicController {
 	@FXML
 	private CheckBox leidobox;
 	@FXML
-	private TextArea codigotext;
+	private TextArea titulocolecciontext;
 	@FXML
-	private TextArea codigocolecciontext;
+	private CheckBox localizacionbox;
+	@FXML
+	private CheckBox propiedadbox;
+	@FXML
+	private TextArea tapatext;
+	@FXML
+	private TextArea tipotext;
+	
 
 	@FXML
 	protected void initialize() {
@@ -41,6 +48,11 @@ public class CrearComicController {
 		});
 	}
 
+	@FXML
+	private void cancelar() throws IOException{
+		App.setRoot("primary");
+	}
+	
 	// guardar los datos introducidos y volver a la pagina original
 	@FXML
 	private void switchToComics() throws IOException {
@@ -54,8 +66,11 @@ public class CrearComicController {
 		c.setTitulo(titulotext.getText());
 		c.setNum_paginas(Integer.parseInt(numeropaginastext.getText()));
 		c.setLeido(leidobox.isSelected());
-		c.setCodigo(codigotext.getText());
-		c.setCodigo_coleccion(codigocolecciontext.getText());
+		c.setTitulo_coleccion(titulocolecciontext.getText());
+		c.setLocalizacion(localizacionbox.isSelected());
+		c.setPropiedad(propiedadbox.isSelected());
+		c.setTipo(tipotext.getText());
+		c.setTapa(tapatext.getText());
 
 		// guarda el comic en la base de datos
 		try {
@@ -79,52 +94,33 @@ public class CrearComicController {
 		// comprueba que el titulo no este vacio
 		if (titulotext.getText().trim().equals("")) {
 			result = false;
-			mostrarAlert("El título está vacío");
+			mostrarAlert("Titulo");
 		}
 
 		// comprueba que el numero de paginas no este vacio y sea mayor que 0
 		if (numeropaginastext.getText().trim().equals("")) {
 			result = false;
-			mostrarAlert("El numero de páginas está vacío");
+			mostrarAlert("Numero de páginas");
 		} else if (Integer.valueOf(numeropaginastext.getText()) <= 0) {
 			result = false;
 			mostrarAlert("El numero de páginas debe ser mayor que 0");
 		}
 
-		// comprueba que el codigo del comic no este vacio
-		if (codigotext.getText().trim().equals("")) {
-			result = false;
-			mostrarAlert("El codigo está vacío");
-		}
-		 
-
 		// comprueba que el codigo de la coleccion no este vacio y sea correcto
-		if (codigocolecciontext.getText().trim().equals("")) {
+		if (titulocolecciontext.getText().trim().equals("")) {
 			result = false;
-			mostrarAlert("El codigo de la coleccion está vacío");
+			mostrarAlert("titulo de coleccion");
 		}
-
-		// comprueba si el codigo de la coleccion coincide con alguna coleccion de la
-		// base de datos
-		/*if (codigocolecciontext.getText().trim() != ("")) {
-			String texto = "";
-			boolean existe = false;
-			for (int i = 0; i < todascoleccion.size() && existe == false; i++) {
-				if (todascoleccion.get(i).getCodigo() == codigocolecciontext.getText()) {
-					existe = true;
-				}
-			}
-
-			if (existe == false) {
-				for (int j = 0; j < todascoleccion.size(); j++) {
-					texto += "Titulo: " + todascoleccion.get(j).getTitulo() + " Codigo: "
-							+ todascoleccion.get(j).getCodigo() + "\n";
-				}
-
-				mostrarAlert2(texto);
-				result = false;
-			}
-		}*/
+		//comprueba que el tipo de tapa de no esta vacio
+		if(tapatext.getText().trim().equals("")) {
+			result=false;
+			mostrarAlert("tipo de tapa");
+		}
+		//comprueba que el tipo de comic no este vacio
+		if(tipotext.getText().trim().equals("")) {
+			result=false;
+			mostrarAlert("tipo de comic");
+		}
 
 		return result;
 	}
@@ -138,7 +134,7 @@ public class CrearComicController {
 	}
 
 	private void mostrarAlert(String error) {
-		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		Alert alert = new Alert(Alert.AlertType.ERROR);
 		alert.setHeaderText(null);
 		alert.setTitle("Alert");
 		alert.setContentText("Rellene todos los campos: " + error);
@@ -146,7 +142,7 @@ public class CrearComicController {
 	}
 
 	private void mostrarAlert2(String error) {
-		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		Alert alert = new Alert(Alert.AlertType.WARNING);
 		alert.setHeaderText(null);
 		alert.setTitle("Recomendacion");
 		alert.setContentText("El codigo de la coleccion no pertenece a ninguna coleccion:");
@@ -155,7 +151,7 @@ public class CrearComicController {
 	}
 
 	private void mostrarAlert3(String error) {
-		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		Alert alert = new Alert(Alert.AlertType.WARNING);
 		alert.setHeaderText(null);
 		alert.setTitle("Recomendacion");
 

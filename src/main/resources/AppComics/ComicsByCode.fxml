@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="329.0" prefWidth="506.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppComics.ComicByCodeController">
+<AnchorPane prefHeight="486.0" prefWidth="506.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppComics.ComicController">
    <children>
       <MenuBar layoutY="1.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
@@ -60,16 +60,22 @@
                         <Bloom />
                      </effect>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="57.0" prefHeight="18.0" prefWidth="110.0" text="Numero de paginas:" />
-                  <Label alignment="TOP_RIGHT" layoutX="34.0" layoutY="107.0" prefHeight="18.0" prefWidth="98.0" text="Estado de lectura:" />
-                  <Label alignment="TOP_RIGHT" layoutX="11.0" layoutY="151.0" prefHeight="18.0" prefWidth="119.0" text="Codigo identificatorio:" />
-                  <Label alignment="TOP_RIGHT" layoutX="11.0" layoutY="204.0" prefHeight="18.0" prefWidth="119.0" text="Codigo coleccion:" />
+                  <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="85.0" prefHeight="18.0" prefWidth="110.0" text="Numero de paginas:" />
+                  <Label alignment="TOP_RIGHT" layoutX="31.0" layoutY="135.0" prefHeight="18.0" prefWidth="98.0" text="Estado de lectura:" />
+                  <Label alignment="TOP_RIGHT" layoutX="13.0" layoutY="53.0" prefHeight="18.0" prefWidth="119.0" text="Titulo coleccion:" />
                   <Label fx:id="TituloLabel" layoutX="157.0" layoutY="16.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
-                  <Label fx:id="Num_paginasLabel" layoutX="157.0" layoutY="58.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
-                  <Label fx:id="LeidoLabel" layoutX="157.0" layoutY="107.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
-                  <Label fx:id="CodigoLabel" layoutX="157.0" layoutY="151.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
-                  <Label fx:id="Codigo_coleccionLabel" layoutX="157.0" layoutY="205.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
-                  <Button layoutX="84.0" layoutY="236.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar Comic" />
+                  <Label fx:id="num_paginaslabel" layoutX="154.0" layoutY="86.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
+                  <Label fx:id="LeidoLabel" layoutX="154.0" layoutY="135.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
+                  <Label fx:id="Titulo_coleccionLabel" layoutX="159.0" layoutY="54.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
+                  <Button layoutX="77.0" layoutY="396.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar Comic" />
+                  <Label layoutX="60.0" layoutY="180.0" text="Localizacion:" />
+                  <Label fx:id="LocalizacioLabel" layoutX="158.0" layoutY="180.0" text="Label" />
+                  <Label layoutX="72.0" layoutY="227.0" text="Propiedad:" />
+                  <Label fx:id="propiedadLabel" layoutX="158.0" layoutY="227.0" text="Label" />
+                  <Label layoutX="58.0" layoutY="267.0" text="Tipo de tapa:" />
+                  <Label fx:id="tapaLabel" layoutX="158.0" layoutY="267.0" text="Label" />
+                  <Label layoutX="54.0" layoutY="310.0" text="Tipo de comic:" />
+                  <Label fx:id="tipoLabel" layoutX="158.0" layoutY="310.0" text="Label" />
                </children>
             </Pane>
          </items>

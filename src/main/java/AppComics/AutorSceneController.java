@@ -7,32 +7,27 @@ import AppComics.model.Autor;
 import AppComics.model.AutorDAO;
 import AppComics.model.Coleccion;
 import AppComics.model.ColeccionDAO;
+import AppComics.utils.Utils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class AutorSceneController {
-
+	private static AutorDAO autor = new AutorDAO();
 	@FXML
 	private Label NombreLabel;
 	@FXML
-	private Label EdadLabel;
-	@FXML
-	
-	private Label DniLabel;
-	@FXML
 	private Label DescripcionLabel;
 	@FXML
-	private Label ObrasLabel;
+	private Button ObrasLabel;
 
 	@FXML
 	private TableView<Autor> tablaAutores;
-	@FXML
-	private TableColumn<Autor, String> dniColumna;
 	@FXML
 	private TableColumn<Autor, String> nombreColumna;
 
@@ -47,7 +42,6 @@ public class AutorSceneController {
 	private void switchToAutores() throws IOException {
 		App.setRoot("AutorScene");
 	}
-
 	// ir a los comics
 	@FXML
 	private void switchToComics() throws IOException {
@@ -72,11 +66,6 @@ public class AutorSceneController {
 	}
 
 	private void configuraTabla() {
-		dniColumna.setCellValueFactory(cadapersona -> {
-			SimpleStringProperty v = new SimpleStringProperty();
-			v.setValue(cadapersona.getValue().getDni());
-			return v;
-		});
 		nombreColumna.setCellValueFactory(cadapersona -> {
 			SimpleStringProperty v = new SimpleStringProperty();
 			v.setValue(cadapersona.getValue().getNombre());
@@ -87,50 +76,35 @@ public class AutorSceneController {
 	private void muestraInfo(Autor a) {
 		if (a != null) {
 
-			if (DniLabel != null) {
-				DniLabel.setText(a.getDni());
-			} else {
-				DniLabel.setText("Desconocido");
-			}
+			
 			if (NombreLabel != null) {
 				NombreLabel.setText(a.getNombre());
 			} else {
 				NombreLabel.setText("Desconocido");
-			}
-			if (EdadLabel != null) {
-				EdadLabel.setText(a.getEdad() + "");
-			} else {
-				EdadLabel.setText("Desconocido");
 			}
 			if (DescripcionLabel != null) {
 				DescripcionLabel.setText(a.getDescripcion());
 			} else {
 				DescripcionLabel.setText("No hay informacion");
 			}
-			if (ObrasLabel == null) {
-				ObrasLabel.setText(mostrarobras(a));
-			} /*else {
-				ObrasLabel.setText("Desconocidas");
-			}*/			
+			
 		} else {
-			DniLabel.setText("Desconocido");
 			NombreLabel.setText("Desconocido");
-			EdadLabel.setText("Desconocido");
 			DescripcionLabel.setText("No hay informacion");
-			ObrasLabel.setText("Desconocidas");
+			
 		}
 	}
 
-	private static String mostrarobras(Autor a) {
-		List<Coleccion> cd= ColeccionDAO.buscartodos();
-		String listas="";
-		for (int i = 0; i < cd.size(); i++) {
-			if (cd.get(i).getCreador()==a.getNombre()) {
-				listas+=cd.get(i).getTitulo()+"\n";
-			}
-		}
-		return listas;
-
+	@FXML
+	private void eliminar() throws IOException{
+		autor.setNombre(this.NombreLabel.getText());
+		autor.eliminar();
+		App.setRoot("AutorScene");
+	}
+	@FXML
+	private void iraobras() throws IOException{
+		Utils.dato=NombreLabel.getText();
+		App.setRoot("ColeccionesByAutor");
 	}
 
 	@FXML

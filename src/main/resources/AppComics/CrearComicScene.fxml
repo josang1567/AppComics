@@ -6,19 +6,26 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="350.0" maxWidth="404.0" minHeight="350.0" minWidth="404.0" prefHeight="350.0" prefWidth="404.0" style="-fx-background-color: #989392;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppComics.CrearComicController">
+<Pane maxHeight="562.0" maxWidth="404.0" minHeight="350.0" minWidth="404.0" prefHeight="562.0" prefWidth="404.0" style="-fx-background-color: #989392;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppComics.CrearComicController">
    <children>
       <Label alignment="CENTER" prefHeight="17.0" prefWidth="404.0" style="-fx-background-color: white;" text="Creacion de comic" />
       <Label alignment="CENTER" layoutY="46.0" prefHeight="38.0" prefWidth="177.0" style="-fx-background-color: white;" text="Inserte el titulo del comic:" />
       <Label alignment="CENTER" layoutY="97.0" prefHeight="39.0" prefWidth="177.0" style="-fx-background-color: white;" text="Inserte el numero de paginas " />
       <Label alignment="CENTER" layoutY="145.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="¿Lo has leido?" />
       <CheckBox fx:id="leidobox" layoutX="214.0" layoutY="157.0" mnemonicParsing="false" text="Leido" />
-      <Label alignment="CENTER" layoutY="199.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="Codigo identifatorio" />
-      <Label alignment="CENTER" layoutX="1.0" layoutY="261.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="Codigo Colección" />
+      <Label alignment="CENTER" layoutY="199.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="Titulo de la coleccion" />
+      <Label alignment="CENTER" layoutX="1.0" layoutY="388.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="Tipo de tapa" />
       <TextArea fx:id="titulotext" layoutX="214.0" layoutY="47.0" prefHeight="39.0" prefWidth="189.0" />
       <TextArea fx:id="numeropaginastext" layoutX="215.0" layoutY="98.0" prefHeight="39.0" prefWidth="189.0" />
-      <TextArea fx:id="codigotext" layoutX="215.0" layoutY="199.0" prefHeight="40.0" prefWidth="189.0" />
-      <TextArea fx:id="codigocolecciontext" layoutX="215.0" layoutY="261.0" prefHeight="40.0" prefWidth="189.0" />
-      <Button layoutX="153.0" layoutY="311.0" mnemonicParsing="false" onAction="#switchToComics" onTouchReleased="#switchToComics" text="Guardar Comic" />
+      <TextArea fx:id="titulocolecciontext" layoutX="215.0" layoutY="199.0" prefHeight="40.0" prefWidth="189.0" />
+      <TextArea fx:id="tapatext" layoutX="215.0" layoutY="388.0" prefHeight="40.0" prefWidth="189.0" />
+      <Button layoutX="81.0" layoutY="523.0" mnemonicParsing="false" onAction="#switchToComics" onTouchReleased="#switchToComics" text="Guardar Comic" />
+      <Button layoutX="257.0" layoutY="523.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+      <Label alignment="CENTER" layoutX="1.0" layoutY="447.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="Tipo de comic" />
+      <TextArea fx:id="tipotext" layoutX="215.0" layoutY="447.0" prefHeight="40.0" prefWidth="189.0" />
+      <Label alignment="CENTER" layoutX="1.0" layoutY="253.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="¿Lo tienes en casa?" />
+      <CheckBox fx:id="localizacionbox" layoutX="215.0" layoutY="265.0" mnemonicParsing="false" text="Lo tengo en casa" />
+      <Label alignment="CENTER" layoutX="-4.0" layoutY="316.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="¿Lo tienes comprado?" />
+      <CheckBox fx:id="propiedadbox" layoutX="218.0" layoutY="328.0" mnemonicParsing="false" text="En propiedad" />
    </children>
 </Pane>

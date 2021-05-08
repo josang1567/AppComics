@@ -51,7 +51,7 @@
             </TableView>
             <Pane prefHeight="567.0" prefWidth="618.0" style="-fx-background-color: #989392;">
                <children>
-                  <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="15.0" prefHeight="18.0" prefWidth="47.0" text="Titulo:">
+                  <Label alignment="CENTER_RIGHT" layoutX="27.0" layoutY="37.0" prefHeight="18.0" prefWidth="47.0" text="Titulo:">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
@@ -62,15 +62,9 @@
                         <Bloom />
                      </effect>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="20.0" layoutY="57.0" prefHeight="18.0" prefWidth="110.0" text="Numero de paginas:" />
-                  <Label alignment="TOP_RIGHT" layoutX="34.0" layoutY="141.0" prefHeight="18.0" prefWidth="98.0" text="Estado de lectura:" />
-                  <Label fx:id="TituloLabel" layoutX="157.0" layoutY="16.0" prefHeight="17.0" prefWidth="52.0" text="Label" />
-                  <Label fx:id="NumeroPaginasLabel" layoutX="157.0" layoutY="58.0" text="Label" />
-                  <Label fx:id="EstadoDeLecturaLabel" layoutX="157.0" layoutY="141.0" text="Label" />
-                  <Label alignment="TOP_RIGHT" layoutX="11.0" layoutY="185.0" prefHeight="18.0" prefWidth="119.0" text="Codigo identificatorio:" />
-                  <Label layoutX="87.0" layoutY="105.0" text="Creador:" />
-                  <Label fx:id="CreadorLabel" layoutX="157.0" layoutY="105.0" text="Label" />
-                  <Button fx:id="codigoLabel" layoutX="145.0" layoutY="182.0" mnemonicParsing="false" onAction="#switchToComicsbycodigo" style="-fx-background-color: #989392;" text="Button">
+                  <Label layoutX="35.0" layoutY="114.0" text="Creador:" />
+                  <Label fx:id="CreadorLabel" layoutX="116.0" layoutY="114.0" text="Label" />
+                  <Button fx:id="Titulobutton" layoutX="106.0" layoutY="34.0" mnemonicParsing="false" onAction="#switchToComicsbycodigo" style="-fx-background-color: #989392;" text="Button">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
