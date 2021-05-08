@@ -17,10 +17,12 @@
    <children>
       <MenuBar layoutY="1.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
-            <Menu mnemonicParsing="false" text="Archivos">
+            <Menu mnemonicParsing="false" text="Ver">
                <items>
+                  <MenuItem mnemonicParsing="false" onAction="#switchToInicio" text="Inicio" />
                   <MenuItem mnemonicParsing="false" onAction="#switchToAutores" text="Autores" />
                   <MenuItem mnemonicParsing="false" onAction="#switchToColecciones" text="Colecciones" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToComics" text="Comics" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Editar">
@@ -60,11 +62,9 @@
                         <Bloom />
                      </effect>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="85.0" prefHeight="18.0" prefWidth="110.0" text="Numero de paginas:" />
                   <Label alignment="TOP_RIGHT" layoutX="31.0" layoutY="135.0" prefHeight="18.0" prefWidth="98.0" text="Estado de lectura:" />
                   <Label alignment="TOP_RIGHT" layoutX="13.0" layoutY="53.0" prefHeight="18.0" prefWidth="119.0" text="Titulo coleccion:" />
                   <Label fx:id="TituloLabel" layoutX="157.0" layoutY="16.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
-                  <Label fx:id="num_paginaslabel" layoutX="154.0" layoutY="86.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
                   <Label fx:id="LeidoLabel" layoutX="154.0" layoutY="135.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
                   <Label fx:id="Titulo_coleccionLabel" layoutX="159.0" layoutY="54.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
                   <Button layoutX="77.0" layoutY="396.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar Comic" />

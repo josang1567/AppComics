@@ -1,13 +1,18 @@
 package AppComics;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import AppComics.model.ComicDao;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import AppComics.model.Coleccion;
 import AppComics.model.ColeccionDAO;
@@ -19,40 +24,39 @@ public class CrearComicController {
 	static ComicDao c = new ComicDao();
 	@FXML
 	private TextArea titulotext;
-	@FXML
-	private TextArea numeropaginastext;
+
 	@FXML
 	private CheckBox leidobox;
 	@FXML
-	private TextArea titulocolecciontext;
+	private ChoiceBox<String> coleccionbox;
+
+	ObservableList<String> Listatitulos = FXCollections.observableArrayList(nombrescolecciones(todascoleccion));
 	@FXML
 	private CheckBox localizacionbox;
 	@FXML
 	private CheckBox propiedadbox;
-	@FXML
-	private TextArea tapatext;
-	@FXML
-	private TextArea tipotext;
 	
+	@FXML
+	private ChoiceBox<String> tapasbox;
+
+	ObservableList<String> tapas = FXCollections.observableArrayList("dura", "blanda");
+	@FXML
+	private ChoiceBox<String> tiposbox;
+
+	ObservableList<String> tipos = FXCollections.observableArrayList("comic", "manga", "manwha", "novela grafica");
 
 	@FXML
-	protected void initialize() {
-		numeropaginastext.textProperty().addListener(new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				if (!newValue.matches("\\d*")) {
-					numeropaginastext.setText(newValue.replaceAll("[^\\d]", ""));
-				}
-
-			}
-		});
-	}
-
-	@FXML
-	private void cancelar() throws IOException{
+	private void cancelar() throws IOException {
 		App.setRoot("primary");
 	}
-	
+
+	@FXML
+	private void initialize() {
+		tapasbox.setItems(tapas);
+		tiposbox.setItems(tipos);
+		coleccionbox.setItems(Listatitulos);
+	}
+
 	// guardar los datos introducidos y volver a la pagina original
 	@FXML
 	private void switchToComics() throws IOException {
@@ -64,13 +68,12 @@ public class CrearComicController {
 		// método acaba con el return
 
 		c.setTitulo(titulotext.getText());
-		c.setNum_paginas(Integer.parseInt(numeropaginastext.getText()));
 		c.setLeido(leidobox.isSelected());
-		c.setTitulo_coleccion(titulocolecciontext.getText());
+		c.setTitulo_coleccion(coleccionbox.getValue());
 		c.setLocalizacion(localizacionbox.isSelected());
 		c.setPropiedad(propiedadbox.isSelected());
-		c.setTipo(tipotext.getText());
-		c.setTapa(tapatext.getText());
+		c.setTipo(tiposbox.getValue());
+		c.setTapa(tapasbox.getValue());
 
 		// guarda el comic en la base de datos
 		try {
@@ -97,31 +100,6 @@ public class CrearComicController {
 			mostrarAlert("Titulo");
 		}
 
-		// comprueba que el numero de paginas no este vacio y sea mayor que 0
-		if (numeropaginastext.getText().trim().equals("")) {
-			result = false;
-			mostrarAlert("Numero de páginas");
-		} else if (Integer.valueOf(numeropaginastext.getText()) <= 0) {
-			result = false;
-			mostrarAlert("El numero de páginas debe ser mayor que 0");
-		}
-
-		// comprueba que el codigo de la coleccion no este vacio y sea correcto
-		if (titulocolecciontext.getText().trim().equals("")) {
-			result = false;
-			mostrarAlert("titulo de coleccion");
-		}
-		//comprueba que el tipo de tapa de no esta vacio
-		if(tapatext.getText().trim().equals("")) {
-			result=false;
-			mostrarAlert("tipo de tapa");
-		}
-		//comprueba que el tipo de comic no este vacio
-		if(tipotext.getText().trim().equals("")) {
-			result=false;
-			mostrarAlert("tipo de comic");
-		}
-
 		return result;
 	}
 
@@ -141,14 +119,6 @@ public class CrearComicController {
 		alert.showAndWait();
 	}
 
-	private void mostrarAlert2(String error) {
-		Alert alert = new Alert(Alert.AlertType.WARNING);
-		alert.setHeaderText(null);
-		alert.setTitle("Recomendacion");
-		alert.setContentText("El codigo de la coleccion no pertenece a ninguna coleccion:");
-		alert.setContentText("Las colecciones existentes son estas:\n " + error);
-		alert.showAndWait();
-	}
 
 	private void mostrarAlert3(String error) {
 		Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -159,4 +129,12 @@ public class CrearComicController {
 		alert.showAndWait();
 	}
 
+	private ArrayList<String> nombrescolecciones(List<Coleccion> c) {
+		ArrayList<String> titulos = new ArrayList<String>();
+		for (int i = 0; i < c.size(); i++) {
+			System.out.println(c.get(i).getTitulo());
+			titulos.add(c.get(i).getTitulo());
+		}
+		return titulos;
+	}
 }

@@ -51,6 +51,11 @@ public class AutorSceneController {
 	private void switchtocrear() throws IOException{
 		App.setRoot("CrearAutorScene");
 	}
+	// ir a crear inicio
+			@FXML
+			private void switchToInicio() throws IOException {
+				App.setRoot("Inicio");
+			}
 
 	@FXML
 	protected void initialize() {

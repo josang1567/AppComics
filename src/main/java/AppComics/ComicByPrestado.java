@@ -3,6 +3,7 @@ package AppComics;
 import java.io.IOException;
 import java.util.List;
 
+import AppComics.model.Coleccion;
 import AppComics.model.Comic;
 import AppComics.model.ComicDao;
 import AppComics.utils.Utils;
@@ -14,10 +15,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.collections.FXCollections;
 
-public class ComicController {
+public class ComicByPrestado {
 	static ComicDao cd = new ComicDao();
-	
-	static List<Comic> comics= cd.mostrartodos();
 	static String code = "";
 
 	// ir a todas las colecciones
@@ -48,10 +47,12 @@ public class ComicController {
 			private void switchToInicio() throws IOException {
 				App.setRoot("Inicio");
 			}
+
 	@FXML
 	private Label TituloLabel;
 	@FXML
 	private Label LeidoLabel;
+
 	@FXML
 	private Label Titulo_coleccionLabel;
 	@FXML
@@ -75,7 +76,7 @@ public class ComicController {
 		configuraTabla();
 		// Cargar de la base de datos!!!!!
 
-		List<Comic> todas = ComicDao.mostrartodos();
+		List<Comic> todas = ComicDao.buscaPorLocalizacion(false);
 		tablacomics.setItems(FXCollections.observableArrayList(todas));
 		tablacomics.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 			muestraInfo(newValue);
@@ -119,37 +120,6 @@ public class ComicController {
 		cd.eliminar(TituloLabel.getText());
 		App.setRoot("primary");
 	}
-	@FXML
-	private void lectura() throws IOException{
-		ComicDao actualizar= new ComicDao(
-				TituloLabel.getText(),
-				cambialeido(LeidoLabel.getText()),
-				Titulo_coleccionLabel.getText(),
-				cambialocal(LocalizacioLabel.getText()),
-				cambiapropi(propiedadLabel.getText()),
-				tapaLabel.getText(),
-				tipoLabel.getText());
-		
-		if(actualizar.isLeido()==true) {
-			actualizar.setLeido(false);
-		}else if(actualizar.isLeido()==false){
-			actualizar.setLeido(true);
-		}
-		
-		actualizar.guardar();
-		App.setRoot("primary");
-	}
-	
-	@FXML
-	private void propiedad() throws IOException{
-		
-		App.setRoot("primary");
-	}
-	@FXML 
-	private void localizacion() throws IOException{
-		
-		App.setRoot("primary");
-	}
 
 	@FXML
 	private void ayuda() {
@@ -177,34 +147,6 @@ public class ComicController {
 		alert.setTitle("Informacion basica:");
 		alert.setContentText("En esta parte se muestra la informacion de los comics");
 		alert.showAndWait();
-	}
-	
-	private boolean cambialocal(String frase) {
-		boolean cambio=false;
-		if (frase.trim().equals("En casa")) {
-			cambio=true;
-		}else if(frase.trim().equals("Prestado")) {
-			cambio=false;
-		}
-		return cambio;
-	}
-	private boolean cambialeido(String frase) {
-		boolean cambio=false;
-		if (frase.trim().equals("No leido")) {
-			cambio=true;
-		}else if(frase.trim().equals("Leido")) {
-			cambio=false;
-		}
-		return cambio;
-	}
-	private boolean cambiapropi(String frase) {
-		boolean cambio=false;
-		if (frase.trim().equals("En posesion")) {
-			cambio=true;
-		}else if(frase.trim().equals("En lista de deseos")) {
-			cambio=false;
-		}
-		return cambio;
 	}
 
 }

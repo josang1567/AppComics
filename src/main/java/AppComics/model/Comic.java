@@ -3,7 +3,6 @@ package AppComics.model;
 public class Comic {
 
 	protected String Titulo;
-	protected int Num_paginas;
 	protected boolean Leido;
 	protected String titulo_coleccion;
 	protected boolean localizacion;
@@ -13,11 +12,10 @@ public class Comic {
 
 	
 	
-	public Comic(String titulo, int num_paginas, boolean leido, String titulo_coleccion, boolean localizacion,
+	public Comic(String titulo, boolean leido, String titulo_coleccion, boolean localizacion,
 			boolean propiedad, String tapa, String tipo) {
 		super();
 		Titulo = titulo;
-		Num_paginas = num_paginas;
 		Leido = leido;
 		this.titulo_coleccion = titulo_coleccion;
 		this.localizacion = localizacion;
@@ -28,7 +26,6 @@ public class Comic {
 
 	public Comic() {
 		this.Titulo = "Desconocido";
-		this.Num_paginas = 0;
 		this.Leido = false;
 		this.titulo_coleccion = "00000";
 		this.localizacion=true;
@@ -45,13 +42,7 @@ public class Comic {
 		Titulo = titulo;
 	}
 
-	public int getNum_paginas() {
-		return Num_paginas;
-	}
-
-	public void setNum_paginas(int num_paginas) {
-		Num_paginas = num_paginas;
-	}
+	
 
 	public boolean isLeido() {
 		return Leido;

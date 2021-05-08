@@ -51,6 +51,11 @@ public class ColeccionesbyAutorController {
 	private void switchToComics() throws IOException {
 		App.setRoot("primary");
 	}
+	// ir a crear inicio
+			@FXML
+			private void switchToInicio() throws IOException {
+				App.setRoot("Inicio");
+			}
 	// ir a los comics de este codigo
 		@FXML
 		private void switchToComicsbycodigo() throws IOException {
