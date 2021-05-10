@@ -19,19 +19,17 @@ public class ColeccionDAO extends Coleccion {
 	private final static String GETBYCODIGO = "SELECT * FROM  Coleccion WHERE titulo=";
 
 	// string usado para insertar comnics
-	private final static String INSERTUPDATE = "INSERT INTO  Coleccion(titulo, creador) "
-			+ "VALUES (?,?) " + "ON DUPLICATE KEY UPDATE creador=?";
+	private final static String INSERTUPDATE = "INSERT INTO  Coleccion(titulo, nombre_autor) "
+			+ "VALUES (?,?) " + "ON DUPLICATE KEY UPDATE nombre_autor=?";
 
 	// eliminar
 	private final static String DELETE = "DELETE FROM Coleccion WHERE titulo=?";
 
-	// seleccionar por nombre
-	private final static String SELECTBYTITLE = "SELECT * FROM Coleccion WHERE  titulo like ?";
-	// seleccionar por creador;
-	private final static String SELECTBYCREADOR = "SELECT * FROM Coleccion WHERE  creador like ?";
+	// seleccionar por nombre_autor;
+	private final static String SELECTBYnombre_autor = "SELECT * FROM Coleccion WHERE  nombre_autor like ?";
 
-	public ColeccionDAO(String titulo, String creador) {
-		super(titulo, creador);
+	public ColeccionDAO(String titulo, String nombre_autor) {
+		super(titulo, nombre_autor);
 	}
 
 	public ColeccionDAO() {
@@ -39,7 +37,7 @@ public class ColeccionDAO extends Coleccion {
 	}
 	public ColeccionDAO(Coleccion c) {
 		this.titulo = c.titulo;
-		this.creador = c.creador;
+		this.nombre_autor = c.nombre_autor;
 		
 	}
 
@@ -58,7 +56,7 @@ public class ColeccionDAO extends Coleccion {
 				ResultSet rs = st.executeQuery(q);
 				while (rs.next()) {
 					this.titulo = rs.getString("titulo");
-					this.creador = rs.getString("creador");
+					this.nombre_autor = rs.getString("nombre_autor");
 					
 				}
 			} catch (SQLException e) {
@@ -80,9 +78,9 @@ public class ColeccionDAO extends Coleccion {
 						PreparedStatement q=con.prepareStatement(INSERTUPDATE);
 						//insert 
 						q.setString(1, this.titulo);
-						q.setString(2, this.creador);
+						q.setString(2, this.nombre_autor);
 						//on duplicate
-						q.setString(3, this.creador);
+						q.setString(3, this.nombre_autor);
 						rs =q.executeUpdate();		
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
@@ -101,7 +99,7 @@ public class ColeccionDAO extends Coleccion {
 				q.setString(1, this.titulo);
 				rs =q.executeUpdate();
 				this.titulo = "Desconocido";
-				this.creador = "Desconocido";
+				this.nombre_autor = "Desconocido";
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -117,14 +115,14 @@ public class ColeccionDAO extends Coleccion {
 		Connection con = conexion.getConexion();
 		if (con != null) {
 			try {
-				PreparedStatement q=con.prepareStatement(SELECTBYCREADOR);
+				PreparedStatement q=con.prepareStatement(SELECTBYnombre_autor);
 				q.setString(1, nombre);
 				ResultSet rs=q.executeQuery();
 				while(rs.next()) {
 					//es que hay al menos un resultado
 					Coleccion a=new Coleccion();
 					a.setTitulo(rs.getString("titulo"));
-					a.setCreador(rs.getString("creador"));
+					a.setnombre_autor(rs.getString("nombre_autor"));
 					
 					result.add(a);
 				}
@@ -147,7 +145,7 @@ public class ColeccionDAO extends Coleccion {
 				while(rs.next()) {
 					//es que hay al menos un resultado
 					Coleccion a=new Coleccion();
-					a.setCreador(rs.getString("creador"));
+					a.setnombre_autor(rs.getString("nombre_autor"));
 					a.setTitulo(rs.getString("titulo"));
 					result.add(a);
 				}

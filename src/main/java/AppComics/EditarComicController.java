@@ -10,18 +10,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
 import AppComics.model.Coleccion;
 import AppComics.model.ColeccionDAO;
 import AppComics.model.Comic;
 
-public class CrearComicController {
-	
+public class EditarComicController {
+	 
 	static List<Comic> todoscomic = ComicDao.mostrartodos();
 	static ComicDao c = new ComicDao();
 	@FXML
-	private TextArea titulotext;
-
+	private ComboBox<String> titulobox;
+	ObservableList<String> Listatituloscomic = FXCollections.observableArrayList(tituloscomics(todoscomic));
 	@FXML
 	private ChoiceBox<String> leidobox;
 	ObservableList<String> leido = FXCollections.observableArrayList("Leido", "No leido");
@@ -52,10 +51,13 @@ public class CrearComicController {
 
 	@FXML
 	private void initialize() {
-		 List<Coleccion> todascoleccion = ColeccionDAO.buscartodos();
-		 ObservableList<String> Listatitulos = FXCollections.observableArrayList(nombrescolecciones(todascoleccion));
-		 
-		 
+		List<Coleccion> todascoleccion = ColeccionDAO.buscartodos();
+		ObservableList<String> Listatitulos = FXCollections.observableArrayList(nombrescolecciones(todascoleccion));
+		
+		titulobox.setItems(Listatituloscomic);
+		if(Listatituloscomic.size()>3) {
+			titulobox.setVisibleRowCount(3);
+		}
 		leidobox.setValue(leido.get(0));
 		leidobox.setItems(leido);
 		localizacionbox.setValue(localizacion.get(0));
@@ -79,13 +81,10 @@ public class CrearComicController {
 	@FXML
 	private void switchToComics() throws IOException {
 
-		// asigna los valores a el nuevo comic
-		if (!validarFormulario())
-			return;
-		// si el validar fomulario da false esto que sigue no se ejecuta porque el
-		// método acaba con el return
+	
+		
 
-		c.setTitulo(titulotext.getText());
+		c.setTitulo(titulobox.getValue());
 		c.setLeido(cambiochoice(leidobox));
 		c.setTitulo_coleccion(coleccionbox.getValue());
 		c.setLocalizacion(cambiochoice(localizacionbox));
@@ -109,17 +108,7 @@ public class CrearComicController {
 		App.setRoot("primary");
 	}
 
-	private boolean validarFormulario() {
-		boolean result = true;
-
-		// comprueba que el titulo no este vacio
-		if (titulotext.getText().trim().equals("")) {
-			result = false;
-			mostrarAlert("Titulo");
-		}
-
-		return result;
-	}
+	
 
 	private void mostrarAlertInfo() {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -129,18 +118,19 @@ public class CrearComicController {
 		alert.showAndWait();
 	}
 
-	private void mostrarAlert(String error) {
-		Alert alert = new Alert(Alert.AlertType.ERROR);
-		alert.setHeaderText(null);
-		alert.setTitle("Alert");
-		alert.setContentText("Rellene todos los campos: " + error);
-		alert.showAndWait();
-	}
+	
 
 
 	
 
 	private ArrayList<String> nombrescolecciones(List<Coleccion> c) {
+		ArrayList<String> titulos = new ArrayList<String>();
+		for (int i = 0; i < c.size(); i++) {
+			titulos.add(c.get(i).getTitulo());
+		}
+		return titulos;
+	}
+	private ArrayList<String> tituloscomics(List<Comic> c) {
 		ArrayList<String> titulos = new ArrayList<String>();
 		for (int i = 0; i < c.size(); i++) {
 			titulos.add(c.get(i).getTitulo());

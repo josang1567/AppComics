@@ -5,16 +5,14 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.Pane?>
 
-<ScrollPane fitToWidth="true" prefHeight="500.0" prefWidth="406.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppComics.CrearComicController">
+<ScrollPane fitToWidth="true" prefHeight="500.0" prefWidth="406.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppComics.EditarComicController">
    <content>
       <Pane maxHeight="500.0" maxWidth="408.0" prefHeight="500.0" prefWidth="408.0" style="-fx-background-color: #989392;">
          <children>
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="404.0" style="-fx-background-color: white;" text="Creacion de comic" />
             <Label alignment="CENTER" layoutX="5.0" layoutY="35.0" prefHeight="38.0" prefWidth="177.0" style="-fx-background-color: white;" text="Titulo del comic:" />
-            <TextArea fx:id="titulotext" layoutX="196.0" layoutY="34.0" prefHeight="39.0" prefWidth="189.0" />
             <Label alignment="CENTER" layoutX="4.0" layoutY="83.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="¿Lo has leido?" />
             <ChoiceBox fx:id="leidobox" layoutX="202.0" layoutY="91.0" prefWidth="150.0" />
             <Label alignment="CENTER" layoutX="4.0" layoutY="137.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="Titulo de la coleccion" />
@@ -29,6 +27,7 @@
             <Label alignment="CENTER" layoutX="5.0" layoutY="385.0" prefHeight="40.0" prefWidth="177.0" style="-fx-background-color: white;" text="Tipo de comic" />
             <ChoiceBox fx:id="tiposbox" layoutX="206.0" layoutY="392.0" prefWidth="150.0" />
             <Button layoutX="81.0" layoutY="437.0" mnemonicParsing="false" onAction="#switchToComics" onTouchReleased="#switchToComics" text="Guardar Comic" />
+            <ComboBox fx:id="titulobox" layoutX="206.0" layoutY="42.0" prefHeight="21.0" prefWidth="143.0" />
          </children>
       </Pane>
    </content>

@@ -1,8 +1,6 @@
 package AppComics;
 import java.io.IOException;
 import AppComics.model.AutorDAO;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
@@ -69,11 +67,5 @@ public class CrearAutorController {
 		alert.showAndWait();
 	}
 
-	private void mostrarAlert2(String error) {
-		Alert alert = new Alert(Alert.AlertType.WARNING);
-		alert.setHeaderText(null);
-		alert.setTitle("Recomendacion");
-		alert.setContentText("Si usas el codigo: " + error + " El autor se sobreescribira");
-		alert.showAndWait();
-	}
+	
 }

@@ -3,7 +3,6 @@ package AppComics;
 import java.io.IOException;
 import java.util.List;
 
-import AppComics.model.Coleccion;
 import AppComics.model.Comic;
 import AppComics.model.ComicDao;
 import AppComics.utils.Utils;
@@ -43,6 +42,11 @@ public class ComicByCodeController {
 		App.setRoot("CrearComicScene");
 	}
 
+	//ir a editar
+		@FXML
+		private void switchtoeditar() throws IOException{
+			App.setRoot("EditarComic");
+		}
 	@FXML
 	private Label TituloLabel;
 	@FXML
@@ -115,7 +119,6 @@ public class ComicByCodeController {
 		cd.eliminar(TituloLabel.getText());
 		App.setRoot("primary");
 	}
-
 	@FXML
 	private void ayuda() {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -143,5 +146,101 @@ public class ComicByCodeController {
 		alert.setContentText("En esta parte se muestra la informacion de los comics");
 		alert.showAndWait();
 	}
+	
 
+	@FXML
+	private void lectura() throws IOException {
+
+		cd.setTitulo(TituloLabel.getText());
+		cd.setLeido(cambialeido(LeidoLabel.getText()));
+		cd.setTitulo_coleccion(Titulo_coleccionLabel.getText());
+		cd.setLocalizacion(cambialocal(LocalizacioLabel.getText()));
+		cd.setPropiedad(cambiapropi(propiedadLabel.getText()));
+		cd.setTapa(tapaLabel.getText());
+		cd.setTipo(tipoLabel.getText());
+
+		if (cd.isLeido() == false) {
+			cd.setLeido(true);
+		} else if (cd.isLeido() == true) {
+			cd.setLeido(false);
+		}
+
+		cd.guardar();
+		App.setRoot("primary");
+	}
+
+	@FXML
+	private void propiedad() throws IOException {
+		
+		cd.setTitulo(TituloLabel.getText());
+		cd.setLeido(cambialeido(LeidoLabel.getText()));
+		cd.setTitulo_coleccion(Titulo_coleccionLabel.getText());
+		cd.setLocalizacion(cambialocal(LocalizacioLabel.getText()));
+		cd.setPropiedad(cambiapropi(propiedadLabel.getText()));
+		cd.setTapa(tapaLabel.getText());
+		cd.setTipo(tipoLabel.getText());
+
+		if (cd.isPropiedad() == false) {
+			cd.setPropiedad(true);
+		} else if (cd.isPropiedad() == true) {
+			cd.setPropiedad(false);
+		}
+
+		cd.guardar();
+		App.setRoot("primary");
+	}
+
+	@FXML
+	private void localizacion() throws IOException {
+		
+		cd.setTitulo(TituloLabel.getText());
+		cd.setLeido(cambialeido(LeidoLabel.getText()));
+		cd.setTitulo_coleccion(Titulo_coleccionLabel.getText());
+		cd.setLocalizacion(cambialocal(LocalizacioLabel.getText()));
+		cd.setPropiedad(cambiapropi(propiedadLabel.getText()));
+		cd.setTapa(tapaLabel.getText());
+		cd.setTipo(tipoLabel.getText());
+		if (cd.isLocalizacion() == false) {
+			cd.setLocalizacion(true);
+		} else if (cd.isLocalizacion() == true) {
+			cd.setLocalizacion(false);
+		}
+		
+
+		cd.guardar();
+		App.setRoot("primary");
+	}
+
+
+	
+	
+	private boolean cambialocal(String frase) {
+		boolean cambio = false;
+		if (frase.trim().equals("En casa")) {
+			cambio = true;
+		} else if (frase.trim().equals("Prestado")) {
+			cambio = false;
+		}
+		return cambio;
+	}
+
+	private boolean cambialeido(String frase) {
+		boolean cambio = false;
+		if (frase.trim().equals("No leido")) {
+			cambio = false;
+		} else if (frase.trim().equals("Leido")) {
+			cambio = true;
+		}
+		return cambio;
+	}
+
+	private boolean cambiapropi(String frase) {
+		boolean cambio = false;
+		if (frase.trim().equals("En posesion")) {
+			cambio = true;
+		} else if (frase.trim().equals("En lista de deseos")) {
+			cambio = false;
+		}
+		return cambio;
+	}
 }

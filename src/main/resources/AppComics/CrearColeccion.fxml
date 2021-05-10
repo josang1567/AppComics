@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.Pane?>
@@ -9,10 +10,10 @@
    <children>
       <Label alignment="CENTER" layoutX="28.0" layoutY="48.0" prefHeight="38.0" prefWidth="195.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2,4;" text="Inserte el titulo del la coleccion:" />
       <TextArea fx:id="titulotext" layoutX="265.0" layoutY="48.0" prefHeight="38.0" prefWidth="175.0" />
-      <Label alignment="CENTER" layoutX="26.0" layoutY="97.0" prefHeight="40.0" prefWidth="195.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2,4;" text="Nombre del creador:" />
-      <TextArea fx:id="creadorText" layoutX="265.0" layoutY="97.0" prefHeight="40.0" prefWidth="175.0" />
+      <Label alignment="CENTER" layoutX="26.0" layoutY="97.0" prefHeight="40.0" prefWidth="195.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2,4;" text="Nombre del Autor:" />
       <Button layoutX="95.0" layoutY="260.0" mnemonicParsing="false" onAction="#switchToColecciones" onTouchReleased="#switchToColecciones" text="Guardar Coleccion" />
       <Label alignment="CENTER" layoutX="4.0" layoutY="5.0" prefHeight="17.0" prefWidth="461.0" style="-fx-background-color: white;" text="Creacion de colección" />
       <Button layoutX="255.0" layoutY="260.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar creación" />
+      <ComboBox fx:id="NombresAutor" layoutX="265.0" layoutY="98.0" prefHeight="38.0" prefWidth="175.0" />
    </children>
 </Pane>

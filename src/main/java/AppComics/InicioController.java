@@ -2,7 +2,6 @@ package AppComics;
 
 import java.io.IOException;
 
-import AppComics.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 

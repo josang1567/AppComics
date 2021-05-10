@@ -26,6 +26,7 @@
             <Menu mnemonicParsing="false" text="Editar">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#switchtocrear" text="Añadir Autor" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchtoeditar" text="Editar Autor" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Ayuda">
@@ -39,7 +40,7 @@
       </MenuBar>
       <SplitPane dividerPositions="0.5" layoutX="59.0" layoutY="270.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
          <items>
-            <TableView fx:id="tablaAutores" prefHeight="434.0" prefWidth="216.0" style="-fx-background-color: #989392;">
+            <TableView fx:id="tablaAutores" prefHeight="422.0" prefWidth="345.0" style="-fx-background-color: #989392;">
               <columns>
                 <TableColumn fx:id="nombreColumna" prefWidth="98.4000198125841" text="NOMBRE" />
               </columns>

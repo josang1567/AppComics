@@ -34,7 +34,22 @@ public class ComicDao extends Comic {
 
 	// selecciona las coleccion con el titulo de la coleccion igual
 	private final static String SELECTBYCOLECCION = "SELECT * FROM comic WHERE  titulo_coleccion like ?";
-
+	
+	//update estado lectura a true
+	private final static String updatelecturatrue="UPDATE comic set leido=1 where titulo=?";
+	//update estado lectura a false
+	private final static String updatelecturafalse="UPDATE comic set leido=0 where titulo=?";
+	// update estado localizacion a true
+	private final static String updatelocalizaciontrue="UPDATE comic set localizacion=1 where titulo=?";
+	// update estado localizacion a false
+	private final static String updatelocalizacionfalse="UPDATE comic set localizacion=0 where titulo=?";
+	//update estado propiedad a true
+	private final static String updatepropiedadtrue="UPDATE comic set propiedad=1 where titulo=?";
+	//update estado propiedad a false
+	private final static String updatepropiedadfalse="UPDATE comic set propiedad=0 where titulo=?";
+	
+	
+	
 	public ComicDao(String titulo, boolean leido, String titulo_coleccion, boolean localizacion, boolean propiedad,
 			String tapa, String tipo) {
 		super(titulo, leido, titulo_coleccion, localizacion, propiedad, tapa, tipo);

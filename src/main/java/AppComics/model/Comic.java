@@ -101,7 +101,7 @@ public class Comic {
 		String estadolectura = "";
 		if (leido == false) {
 			estadolectura = "No leido";
-		} else {
+		} else if(leido==true){
 			estadolectura = "Leido";
 		}
 		return estadolectura;

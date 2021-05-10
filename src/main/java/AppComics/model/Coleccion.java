@@ -1,18 +1,17 @@
 package AppComics.model;
 
-import java.util.List;
 
 public class Coleccion {
 	protected String titulo;
-	protected String creador;
+	protected String nombre_autor;
 	
 
 	
 	
-	public Coleccion(String titulo, String creador) {
+	public Coleccion(String titulo, String nombres_autor) {
 		super();
 		this.titulo = titulo;
-		this.creador = creador;
+		this.nombre_autor = nombres_autor;
 	}
 
 	
@@ -20,7 +19,7 @@ public class Coleccion {
 	public Coleccion() {
 		super();
 		this.titulo = "Desconocido";
-		this.creador = "Desconocido";
+		this.nombre_autor = "Desconocido";
 		
 	}
 
@@ -32,12 +31,12 @@ public class Coleccion {
 		this.titulo = titulo;
 	}
 
-	public String getCreador() {
-		return creador;
+	public String getnombre_autor() {
+		return nombre_autor;
 	}
 
-	public void setCreador(String creador) {
-		this.creador = creador;
+	public void setnombre_autor(String nombres_autor) {
+		this.nombre_autor = nombres_autor;
 	}
 
 

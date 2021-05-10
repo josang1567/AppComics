@@ -5,7 +5,6 @@ import java.util.List;
 
 import AppComics.model.Comic;
 import AppComics.model.ComicDao;
-import AppComics.utils.Utils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -16,8 +15,8 @@ import javafx.collections.FXCollections;
 
 public class ComicController {
 	static ComicDao cd = new ComicDao();
-	
-	static List<Comic> comics= cd.mostrartodos();
+
+	static List<Comic> comics = ComicDao.mostrartodos();
 	static String code = "";
 
 	// ir a todas las colecciones
@@ -43,11 +42,17 @@ public class ComicController {
 	private void switchToCrearComic() throws IOException {
 		App.setRoot("CrearComicScene");
 	}
+	//ir a editar
+	@FXML
+	private void switchtoeditar() throws IOException{
+		App.setRoot("EditarComic");
+	}
 	// ir a crear inicio
-			@FXML
-			private void switchToInicio() throws IOException {
-				App.setRoot("Inicio");
-			}
+	@FXML
+	private void switchToInicio() throws IOException {
+		App.setRoot("Inicio");
+	}
+
 	@FXML
 	private Label TituloLabel;
 	@FXML
@@ -103,13 +108,12 @@ public class ComicController {
 			tapaLabel.setText(c.getTapa());
 			tipoLabel.setText(c.getTipo());
 
-
 		} else {
 			TituloLabel.setText("Desconocido");
 			LeidoLabel.setText("Desconocido");
 			Titulo_coleccionLabel.setText("Ninguno");
 			tapaLabel.setText("Ninguno");
-			
+
 		}
 	}
 
@@ -119,35 +123,67 @@ public class ComicController {
 		cd.eliminar(TituloLabel.getText());
 		App.setRoot("primary");
 	}
+
 	@FXML
-	private void lectura() throws IOException{
-		ComicDao actualizar= new ComicDao(
-				TituloLabel.getText(),
-				cambialeido(LeidoLabel.getText()),
-				Titulo_coleccionLabel.getText(),
-				cambialocal(LocalizacioLabel.getText()),
-				cambiapropi(propiedadLabel.getText()),
-				tapaLabel.getText(),
-				tipoLabel.getText());
+	private void lectura() throws IOException {
+
+		cd.setTitulo(TituloLabel.getText());
+		cd.setLeido(cambialeido(LeidoLabel.getText()));
+		cd.setTitulo_coleccion(Titulo_coleccionLabel.getText());
+		cd.setLocalizacion(cambialocal(LocalizacioLabel.getText()));
+		cd.setPropiedad(cambiapropi(propiedadLabel.getText()));
+		cd.setTapa(tapaLabel.getText());
+		cd.setTipo(tipoLabel.getText());
+
+		if (cd.isLeido() == false) {
+			cd.setLeido(true);
+		} else if (cd.isLeido() == true) {
+			cd.setLeido(false);
+		}
+
+		cd.guardar();
+		App.setRoot("primary");
+	}
+
+	@FXML
+	private void propiedad() throws IOException {
 		
-		if(actualizar.isLeido()==true) {
-			actualizar.setLeido(false);
-		}else if(actualizar.isLeido()==false){
-			actualizar.setLeido(true);
+		cd.setTitulo(TituloLabel.getText());
+		cd.setLeido(cambialeido(LeidoLabel.getText()));
+		cd.setTitulo_coleccion(Titulo_coleccionLabel.getText());
+		cd.setLocalizacion(cambialocal(LocalizacioLabel.getText()));
+		cd.setPropiedad(cambiapropi(propiedadLabel.getText()));
+		cd.setTapa(tapaLabel.getText());
+		cd.setTipo(tipoLabel.getText());
+
+		if (cd.isPropiedad() == false) {
+			cd.setPropiedad(true);
+		} else if (cd.isPropiedad() == true) {
+			cd.setPropiedad(false);
+		}
+
+		cd.guardar();
+		App.setRoot("primary");
+	}
+
+	@FXML
+	private void localizacion() throws IOException {
+		
+		cd.setTitulo(TituloLabel.getText());
+		cd.setLeido(cambialeido(LeidoLabel.getText()));
+		cd.setTitulo_coleccion(Titulo_coleccionLabel.getText());
+		cd.setLocalizacion(cambialocal(LocalizacioLabel.getText()));
+		cd.setPropiedad(cambiapropi(propiedadLabel.getText()));
+		cd.setTapa(tapaLabel.getText());
+		cd.setTipo(tipoLabel.getText());
+		if (cd.isLocalizacion() == false) {
+			cd.setLocalizacion(true);
+		} else if (cd.isLocalizacion() == true) {
+			cd.setLocalizacion(false);
 		}
 		
-		actualizar.guardar();
-		App.setRoot("primary");
-	}
-	
-	@FXML
-	private void propiedad() throws IOException{
-		
-		App.setRoot("primary");
-	}
-	@FXML 
-	private void localizacion() throws IOException{
-		
+
+		cd.guardar();
 		App.setRoot("primary");
 	}
 
@@ -178,31 +214,33 @@ public class ComicController {
 		alert.setContentText("En esta parte se muestra la informacion de los comics");
 		alert.showAndWait();
 	}
-	
+
 	private boolean cambialocal(String frase) {
-		boolean cambio=false;
+		boolean cambio = false;
 		if (frase.trim().equals("En casa")) {
-			cambio=true;
-		}else if(frase.trim().equals("Prestado")) {
-			cambio=false;
+			cambio = true;
+		} else if (frase.trim().equals("Prestado")) {
+			cambio = false;
 		}
 		return cambio;
 	}
+
 	private boolean cambialeido(String frase) {
-		boolean cambio=false;
+		boolean cambio = false;
 		if (frase.trim().equals("No leido")) {
-			cambio=true;
-		}else if(frase.trim().equals("Leido")) {
-			cambio=false;
+			cambio = false;
+		} else if (frase.trim().equals("Leido")) {
+			cambio = true;
 		}
 		return cambio;
 	}
+
 	private boolean cambiapropi(String frase) {
-		boolean cambio=false;
+		boolean cambio = false;
 		if (frase.trim().equals("En posesion")) {
-			cambio=true;
-		}else if(frase.trim().equals("En lista de deseos")) {
-			cambio=false;
+			cambio = true;
+		} else if (frase.trim().equals("En lista de deseos")) {
+			cambio = false;
 		}
 		return cambio;
 	}

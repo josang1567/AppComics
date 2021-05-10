@@ -63,7 +63,11 @@ public class ColeccionesController {
 			App.setRoot("ComicsByCode");
 			
 		}
-	
+		//ir a editar
+		@FXML
+		private void switchtoeditar() throws IOException{
+			App.setRoot("EditarColeccion");
+		}
 	@FXML
 	private void eliminarColeccion()throws IOException{
 		coleccion.setTitulo(this.Titulobutton.getText());
@@ -98,7 +102,7 @@ public class ColeccionesController {
 	private void muestraInfo(Coleccion c) {
 		if(c!=null) {
 			Titulobutton.setText(c.getTitulo());
-			CreadorLabel.setText(c.getCreador());
+			CreadorLabel.setText(c.getnombre_autor());
 		}else {
 			Titulobutton.setText("Desconocido");
 			CreadorLabel.setText("Desconocido");

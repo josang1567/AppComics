@@ -5,8 +5,6 @@ import java.util.List;
 
 import AppComics.model.Autor;
 import AppComics.model.AutorDAO;
-import AppComics.model.Coleccion;
-import AppComics.model.ColeccionDAO;
 import AppComics.utils.Utils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -56,7 +54,11 @@ public class AutorSceneController {
 			private void switchToInicio() throws IOException {
 				App.setRoot("Inicio");
 			}
-
+			//ir a editar
+	@FXML
+	private void switchtoeditar() throws IOException{
+		App.setRoot("EditarAutor");
+	}
 	@FXML
 	protected void initialize() {
 		System.out.println("Cargando...");

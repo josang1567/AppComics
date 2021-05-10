@@ -11,7 +11,7 @@
       <Label alignment="CENTER" layoutX="42.0" layoutY="44.0" prefHeight="38.0" prefWidth="159.0" style="-fx-background-color: white;" text="Inserte el nombre del autor:" />
       <TextArea fx:id="nombretext" layoutX="237.0" layoutY="43.0" prefHeight="17.0" prefWidth="159.0" />
       <Label alignment="CENTER" layoutX="42.0" layoutY="126.0" prefHeight="39.0" prefWidth="159.0" style="-fx-background-color: white;" text="Descripcion" />
-      <Button layoutX="95.0" layoutY="259.0" mnemonicParsing="false" onAction="#guardarautor" text="Guardar Comic" />
+      <Button layoutX="95.0" layoutY="259.0" mnemonicParsing="false" onAction="#guardarautor" text="Guardar Autor" />
       <TextArea fx:id="DescripcionText" layoutX="237.0" layoutY="126.0" prefHeight="40.0" prefWidth="159.0" />
       <Button layoutX="246.0" layoutY="259.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar Creación" />
    </children>

@@ -7,30 +7,38 @@ import java.util.List;
 
 import AppComics.model.Autor;
 import AppComics.model.AutorDAO;
+import AppComics.model.Coleccion;
 import AppComics.model.ColeccionDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
 
-public class CrearColeccionController {
-	 
+public class EditarColeccionController {
+	
 	static ColeccionDAO cd= new ColeccionDAO();
 	@FXML
-	private TextArea titulotext;
+	private ComboBox<String> titulotext;
+	
 	@FXML
 	private ComboBox<String> NombresAutor;
 	
 	
 	@FXML
 	private void initialize() {
-		List<Autor> listaautores= AutorDAO.mostrartodos();
-		ObservableList<String> Autores = FXCollections.observableArrayList(nombresautores(listaautores));
+		 List<Autor> listaautores= AutorDAO.mostrartodos(); 
+		 ObservableList<String> Autores = FXCollections.observableArrayList(nombresautores(listaautores));
+		 List<Coleccion> listarcoleccion=ColeccionDAO.buscartodos();
+		 ObservableList<String> titulos= FXCollections.observableArrayList(nombresColecciones(listarcoleccion));
+		 
 		NombresAutor.setItems(Autores);
 		if(Autores.size()>2) {
 			NombresAutor.setVisibleRowCount(2);
+		}
+		titulotext.setItems(titulos);
+		if(titulos.size()>2) {
+			titulotext.setVisibleRowCount(2);
 		}
 	}
 	
@@ -45,27 +53,14 @@ public class CrearColeccionController {
 	// guardar la coleccion nueva
 	@FXML
 	private void switchToColecciones() throws IOException {
-		if (!validarFormulario())
-			return;
-		
-		cd.setTitulo(titulotext.getText());
+
+		cd.setTitulo(titulotext.getValue());
 		cd.setnombre_autor(NombresAutor.getValue());
 		cd.guardar();
 		mostrarAlertInfo();
 		App.setRoot("secondary");
 	}	
-	private boolean validarFormulario() {
-		boolean result = true;
-
-		// comprueba que el titulo no este vacio
-		if (titulotext.getText().trim().equals("")) {
-			result = false;
-			mostrarAlert("El título está vacío");
-		}
-		
-
-		return result;
-	}
+	
 
 	
 	private void mostrarAlertInfo() {
@@ -76,18 +71,18 @@ public class CrearColeccionController {
 		alert.showAndWait();
 	}
 
-	private void mostrarAlert(String error) {
-		Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		alert.setHeaderText(null);
-		alert.setTitle("Alert");
-		alert.setContentText("Rellene todos los campos: " + error);
-		alert.showAndWait();
-	}
 	
 	private ArrayList<String> nombresautores(List<Autor> a) {
 		ArrayList<String> nombres = new ArrayList<String>();
 		for (int i = 0; i < a.size(); i++) {
 			nombres.add(a.get(i).getNombre());
+		}
+		return nombres;
+	}
+	private ArrayList<String> nombresColecciones(List<Coleccion> a) {
+		ArrayList<String> nombres = new ArrayList<String>();
+		for (int i = 0; i < a.size(); i++) {
+			nombres.add(a.get(i).getTitulo());
 		}
 		return nombres;
 	}
