@@ -8,9 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import AppComics.utils.SaveAndLoad;
 import AppComics.utils.conexion;
 
 public class ColeccionDAO extends Coleccion {
+	static SaveAndLoad snl = SaveAndLoad.getSingletoonInstance();
 	//codigo usado para mostrar todas las colecciones
 	private final static String GETALL="SELECT * from coleccion";
 	
@@ -87,6 +89,7 @@ public class ColeccionDAO extends Coleccion {
 						e.printStackTrace();
 					}
 				}
+				snl.saveColecciones(ColeccionDAO.buscartodos());
 				return rs;
 	}
 	public int eliminar() {
@@ -105,6 +108,7 @@ public class ColeccionDAO extends Coleccion {
 				e.printStackTrace();
 			}
 		}
+		snl.saveColecciones(ColeccionDAO.buscartodos());
 		return rs;
 	}
 

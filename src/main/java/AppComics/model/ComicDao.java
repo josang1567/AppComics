@@ -8,10 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import AppComics.utils.SaveAndLoad;
 import AppComics.utils.conexion;
 
 public class ComicDao extends Comic {
-
+	static SaveAndLoad snl = SaveAndLoad.getSingletoonInstance();
 	// codigo para mostrar todos los comics
 	private final static String GETALL = "SELECT * from comic";
 
@@ -96,6 +97,7 @@ public class ComicDao extends Comic {
 				e.printStackTrace();
 			}
 		}
+		
 	}
 
 	public int guardar() {
@@ -131,6 +133,7 @@ public class ComicDao extends Comic {
 				e.printStackTrace();
 			}
 		}
+		snl.saveComics(ComicDao.mostrartodos());
 		return rs;
 	}
 
@@ -156,6 +159,7 @@ public class ComicDao extends Comic {
 				e.printStackTrace();
 			}
 		}
+		snl.saveComics(ComicDao.mostrartodos());
 		return rs;
 	}
 
@@ -217,7 +221,7 @@ public class ComicDao extends Comic {
 		return result;
 	}
 
-	public static List<Comic> mostrartodos() {
+	public static List<Comic> mostrartodos()  {
 		List<Comic> result = new ArrayList<Comic>();
 		Connection con = conexion.getConexion();
 		if (con != null) {

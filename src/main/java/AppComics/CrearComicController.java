@@ -16,11 +16,12 @@ import AppComics.model.ColeccionDAO;
 import AppComics.model.Comic;
 
 public class CrearComicController {
-	
+
 	static List<Comic> todoscomic = ComicDao.mostrartodos();
 	static ComicDao c = new ComicDao();
 	@FXML
 	private TextArea titulotext;
+	
 
 	@FXML
 	private ChoiceBox<String> leidobox;
@@ -28,14 +29,13 @@ public class CrearComicController {
 	@FXML
 	private ComboBox<String> coleccionbox;
 
-	
 	@FXML
 	private ChoiceBox<String> localizacionbox;
 	ObservableList<String> localizacion = FXCollections.observableArrayList("En casa", "Prestado");
 	@FXML
 	private ChoiceBox<String> propiedadbox;
 	ObservableList<String> propiedad = FXCollections.observableArrayList("En posesion", "Añadir a lista de deseos");
-	
+
 	@FXML
 	private ChoiceBox<String> tapasbox;
 
@@ -52,10 +52,10 @@ public class CrearComicController {
 
 	@FXML
 	private void initialize() {
-		 List<Coleccion> todascoleccion = ColeccionDAO.buscartodos();
-		 ObservableList<String> Listatitulos = FXCollections.observableArrayList(nombrescolecciones(todascoleccion));
-		 
-		 
+		todoscomic=ComicDao.mostrartodos();
+		List<Coleccion> todascoleccion = ColeccionDAO.buscartodos();
+		ObservableList<String> Listatitulos = FXCollections.observableArrayList(nombrescolecciones(todascoleccion));
+
 		leidobox.setValue(leido.get(0));
 		leidobox.setItems(leido);
 		localizacionbox.setValue(localizacion.get(0));
@@ -68,10 +68,9 @@ public class CrearComicController {
 		tiposbox.setItems(tipos);
 		coleccionbox.setValue(Listatitulos.get(0));
 		coleccionbox.setItems(Listatitulos);
-		if(Listatitulos.size()>3) {
+		if (Listatitulos.size() > 3) {
 			coleccionbox.setVisibleRowCount(3);
 		}
-		
 
 	}
 
@@ -137,9 +136,6 @@ public class CrearComicController {
 		alert.showAndWait();
 	}
 
-
-	
-
 	private ArrayList<String> nombrescolecciones(List<Coleccion> c) {
 		ArrayList<String> titulos = new ArrayList<String>();
 		for (int i = 0; i < c.size(); i++) {
@@ -147,28 +143,31 @@ public class CrearComicController {
 		}
 		return titulos;
 	}
-	private boolean cambiochoice(ChoiceBox<String>tipo) {
-		boolean result= false;
-		if(tipo.getValue()==localizacion.get(0)) {
-			//true==en casa
-			result =true;
-		}else if(tipo.getValue()==localizacion.get(1)) {
-			//false== prestado
-			result=false;
-		}else if(tipo.getValue()==leido.get(0)) {
-			//true == leido
-			result=true;
-		}else if (result) {
-			//false== no leido
-			result=false;
-		}else if (tipo.getValue()==propiedad.get(0)) {
-			//true==en posesion
-			result=true;
-		}else if(tipo.getValue()==propiedad.get(1)) {
-			//false==en lista de deseos
-			result=false;
+
+	private boolean cambiochoice(ChoiceBox<String> tipo) {
+		boolean result = false;
+		if (tipo.getValue() == localizacion.get(0)) {
+			// true==en casa
+			result = true;
+		} else if (tipo.getValue() == localizacion.get(1)) {
+			// false== prestado
+			result = false;
+		} else if (tipo.getValue() == leido.get(0)) {
+			// true == leido
+			result = true;
+		} else if (result) {
+			// false== no leido
+			result = false;
+		} else if (tipo.getValue() == propiedad.get(0)) {
+			// true==en posesion
+			result = true;
+		} else if (tipo.getValue() == propiedad.get(1)) {
+			// false==en lista de deseos
+			result = false;
 		}
-		
+
 		return result;
 	}
+
+	
 }

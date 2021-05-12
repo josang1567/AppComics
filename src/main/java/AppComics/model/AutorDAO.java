@@ -8,10 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import AppComics.utils.SaveAndLoad;
 import AppComics.utils.conexion;
 
 
 public class AutorDAO extends Autor {
+	static SaveAndLoad snl = SaveAndLoad.getSingletoonInstance();
 	//codigo para mostrar todos
 	private final static String GETALL="SELECT * FROM autor";
 	
@@ -84,6 +86,7 @@ public class AutorDAO extends Autor {
 						e.printStackTrace();
 					}
 				}
+				snl.saveAutores(AutorDAO.mostrartodos());
 				return rs;
 	}
 
@@ -110,6 +113,7 @@ public class AutorDAO extends Autor {
 				e.printStackTrace();
 			}
 		}
+		snl.saveAutores(AutorDAO.mostrartodos());
 		return rs;
 	}
 

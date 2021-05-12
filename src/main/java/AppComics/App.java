@@ -7,12 +7,22 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
+
+import AppComics.model.Autor;
+import AppComics.model.AutorDAO;
+import AppComics.model.Coleccion;
+import AppComics.model.ColeccionDAO;
+import AppComics.model.Comic;
+import AppComics.model.ComicDao;
+import AppComics.utils.SaveAndLoad;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
-
+ 
+	static SaveAndLoad snl = SaveAndLoad.getSingletoonInstance();
 	
     private static Scene scene;
 
@@ -33,7 +43,9 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+    	
         launch();
+       
     }
 
 }
