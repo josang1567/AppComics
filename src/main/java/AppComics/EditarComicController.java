@@ -1,15 +1,23 @@
 package AppComics;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import AppComics.model.ComicDao;
+import AppComics.utils.Utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import AppComics.model.Coleccion;
 import AppComics.model.ColeccionDAO;
 import AppComics.model.Comic;
@@ -43,7 +51,14 @@ public class EditarComicController {
 	private ChoiceBox<String> tiposbox;
 
 	ObservableList<String> tipos = FXCollections.observableArrayList("comic", "manga", "manwha", "novela grafica");
-
+	@FXML
+	private ImageView portadaimage;
+	@FXML
+	private TextField urltext;
+	@FXML
+	private Button verimagen;
+	static String direccionurl = "src/main/resources/imagenes/Comics/";
+	
 	@FXML
 	private void cancelar() throws IOException {
 		App.setRoot("primary");
@@ -91,7 +106,8 @@ public class EditarComicController {
 		c.setPropiedad(cambiochoice(propiedadbox));
 		c.setTipo(tiposbox.getValue());
 		c.setTapa(tapasbox.getValue());
-
+		Utils.saveImage(urltext.getText(), direccionurl + c.getTitulo() + ".jpg");
+		c.setUrlImagen(direccionurl + c.getTitulo() + ".jpg");
 		// guarda el comic en la base de datos
 		try {
 			c.guardar();
@@ -160,5 +176,27 @@ public class EditarComicController {
 		}
 		
 		return result;
+	}
+	@FXML
+	private void selecImagen() {
+		File file = null;
+		FileChooser filechooser = new FileChooser();
+		filechooser.setTitle("Selecionar imagen...");
+		try {
+			file = filechooser.showOpenDialog(null);
+			if (file != null && file.getPath().matches(".+\\.png") || file.getPath().matches(".+\\.jpg")) {
+				Image img = new Image("file:\\" + file.getPath());
+				portadaimage.setImage(img);
+				urltext.setText(file.getPath());
+			} else { // si la extension es incorrecta sale esta alerta
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setHeaderText(null);
+				alert.setTitle("Información");
+				alert.setContentText("Formato incorrecto: Debe elegir un tipo de archivo jpg o png.");
+				alert.showAndWait();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception;
+		}
 	}
 }

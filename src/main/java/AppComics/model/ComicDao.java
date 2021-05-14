@@ -17,9 +17,9 @@ public class ComicDao extends Comic {
 	private final static String GETALL = "SELECT * from comic";
 
 	// string usado para insertar comnics
-	private final static String INSERTUPDATE = "INSERT INTO  comic(titulo,leido,titulo_coleccion,localizacion,propiedad,tapa,tipo) "
-			+ "VALUES (?,?,?,?,?,?,? )"
-			+ "ON DUPLICATE KEY UPDATE leido=?,titulo_coleccion=?,localizacion=?,propiedad=?,tapa=?, tipo=?";
+	private final static String INSERTUPDATE = "INSERT INTO  comic(titulo,leido,titulo_coleccion,localizacion,propiedad,tapa,tipo,urlimagen) "
+			+ "VALUES (?,?,?,?,?,?,?,? )"
+			+ "ON DUPLICATE KEY UPDATE leido=?,titulo_coleccion=?,localizacion=?,propiedad=?,tapa=?, tipo=?,urlimagen=?";
 
 	// eliminar
 	private final static String DELETE = "DELETE FROM comic WHERE titulo=?";
@@ -52,8 +52,8 @@ public class ComicDao extends Comic {
 	
 	
 	public ComicDao(String titulo, boolean leido, String titulo_coleccion, boolean localizacion, boolean propiedad,
-			String tapa, String tipo) {
-		super(titulo, leido, titulo_coleccion, localizacion, propiedad, tapa, tipo);
+			String tapa, String tipo,String urlImagen) {
+		super(titulo, leido, titulo_coleccion, localizacion, propiedad, tapa, tipo,urlImagen);
 	}
 
 	public ComicDao() {
@@ -69,6 +69,7 @@ public class ComicDao extends Comic {
 		this.propiedad = c.propiedad;
 		this.tapa = c.tapa;
 		this.tipo = c.tapa;
+		this.urlImagen=c.urlImagen;
 	}
 
 	public ComicDao(String titulo) {
@@ -90,6 +91,7 @@ public class ComicDao extends Comic {
 					this.propiedad = rs.getBoolean(propiedad(propiedad));
 					this.tapa = rs.getString(tapa);
 					this.tipo = rs.getString(tipo);
+					this.urlImagen=rs.getString("urlimagen");
 				}
 
 			} catch (SQLException e) {
@@ -118,14 +120,16 @@ public class ComicDao extends Comic {
 				q.setBoolean(5, this.propiedad);
 				q.setString(6, this.tapa);
 				q.setString(7, this.tipo);
+				q.setString(8, this.urlImagen);
 				// on duplicate
 
-				q.setBoolean(8, this.Leido);
-				q.setString(9, this.titulo_coleccion);
-				q.setBoolean(10, this.localizacion);
-				q.setBoolean(11, this.propiedad);
-				q.setString(12, this.tapa);
-				q.setString(13, this.tipo);
+				q.setBoolean(9, this.Leido);
+				q.setString(10, this.titulo_coleccion);
+				q.setBoolean(11, this.localizacion);
+				q.setBoolean(12, this.propiedad);
+				q.setString(13, this.tapa);
+				q.setString(14, this.tipo);
+				q.setString(15, this.urlImagen);
 
 				rs = q.executeUpdate();
 			} catch (SQLException e) {
@@ -154,6 +158,7 @@ public class ComicDao extends Comic {
 				this.propiedad = false;
 				this.tapa = "blanda";
 				this.tipo = "comic";
+				this.urlImagen="";
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -181,6 +186,7 @@ public class ComicDao extends Comic {
 					a.setPropiedad(rs.getBoolean("propiedad"));
 					a.setTapa(rs.getString("tapa"));
 					a.setTipo(rs.getString("tipo"));
+					a.setUrlImagen(rs.getString("urlimagen"));
 					result.add(a);
 				}
 			} catch (SQLException e) {
@@ -210,6 +216,7 @@ public class ComicDao extends Comic {
 					a.setPropiedad(rs.getBoolean("propiedad"));
 					a.setTapa(rs.getString("tapa"));
 					a.setTipo(rs.getString("tipo"));
+					a.setUrlImagen(rs.getString("urlimagen"));
 					result.add(a);
 				}
 			} catch (SQLException e) {
@@ -238,6 +245,7 @@ public class ComicDao extends Comic {
 					a.setPropiedad(rs.getBoolean("propiedad"));
 					a.setTapa(rs.getString("tapa"));
 					a.setTipo(rs.getString("tipo"));
+					a.setUrlImagen(rs.getString("urlimagen"));
 					result.add(a);
 				}
 			} catch (SQLException e) {

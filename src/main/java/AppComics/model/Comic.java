@@ -9,11 +9,11 @@ public class Comic {
 	protected boolean propiedad;
 	protected String tapa;
 	protected String tipo;
-
+	protected String urlImagen;
 	
 	
 	public Comic(String titulo, boolean leido, String titulo_coleccion, boolean localizacion,
-			boolean propiedad, String tapa, String tipo) {
+			boolean propiedad, String tapa, String tipo,String urlImagen) {
 		super();
 		Titulo = titulo;
 		Leido = leido;
@@ -22,6 +22,7 @@ public class Comic {
 		this.propiedad = propiedad;
 		this.tapa = tapa;
 		this.tipo = tipo;
+		this.urlImagen=urlImagen;
 	}
 
 	public Comic() {
@@ -32,6 +33,7 @@ public class Comic {
 		this.propiedad=false;
 		this.tapa="blanda";
 		this.tipo="comic";
+		this.urlImagen="";
 	}
 
 	public String getTitulo() {
@@ -90,6 +92,16 @@ public class Comic {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	
+	
+	public String getUrlImagen() {
+		return urlImagen;
+	}
+
+	public void setUrlImagen(String urlImagen) {
+		this.urlImagen = urlImagen;
 	}
 
 	/***

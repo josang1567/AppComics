@@ -4,14 +4,16 @@ package AppComics.model;
 public class Coleccion {
 	protected String titulo;
 	protected String nombre_autor;
+	protected String urlImagen;
 	
 
 	
 	
-	public Coleccion(String titulo, String nombres_autor) {
+	public Coleccion(String titulo, String nombres_autor, String urlImagen) {
 		super();
 		this.titulo = titulo;
 		this.nombre_autor = nombres_autor;
+		this.urlImagen=urlImagen;
 	}
 
 	
@@ -20,8 +22,21 @@ public class Coleccion {
 		super();
 		this.titulo = "Desconocido";
 		this.nombre_autor = "Desconocido";
+		this.urlImagen="";
 		
 	}
+
+	public String getUrlImagen() {
+		return urlImagen;
+	}
+
+
+
+	public void setUrlImagen(String urlImagen) {
+		this.urlImagen = urlImagen;
+	}
+
+
 
 	public String getTitulo() {
 		return titulo;

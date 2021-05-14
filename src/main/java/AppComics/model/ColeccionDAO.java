@@ -21,8 +21,8 @@ public class ColeccionDAO extends Coleccion {
 	private final static String GETBYCODIGO = "SELECT * FROM  Coleccion WHERE titulo=";
 
 	// string usado para insertar comnics
-	private final static String INSERTUPDATE = "INSERT INTO  Coleccion(titulo, nombre_autor) "
-			+ "VALUES (?,?) " + "ON DUPLICATE KEY UPDATE nombre_autor=?";
+	private final static String INSERTUPDATE = "INSERT INTO  Coleccion(titulo, nombre_autor,urlimagen) "
+			+ "VALUES (?,?,?) " + "ON DUPLICATE KEY UPDATE nombre_autor=?,urlimagen=?";
 
 	// eliminar
 	private final static String DELETE = "DELETE FROM Coleccion WHERE titulo=?";
@@ -30,8 +30,8 @@ public class ColeccionDAO extends Coleccion {
 	// seleccionar por nombre_autor;
 	private final static String SELECTBYnombre_autor = "SELECT * FROM Coleccion WHERE  nombre_autor like ?";
 
-	public ColeccionDAO(String titulo, String nombre_autor) {
-		super(titulo, nombre_autor);
+	public ColeccionDAO(String titulo, String nombre_autor,String urlimagen) {
+		super(titulo, nombre_autor,urlimagen);
 	}
 
 	public ColeccionDAO() {
@@ -40,6 +40,7 @@ public class ColeccionDAO extends Coleccion {
 	public ColeccionDAO(Coleccion c) {
 		this.titulo = c.titulo;
 		this.nombre_autor = c.nombre_autor;
+		this.urlImagen=c.urlImagen;
 		
 	}
 
@@ -59,6 +60,7 @@ public class ColeccionDAO extends Coleccion {
 				while (rs.next()) {
 					this.titulo = rs.getString("titulo");
 					this.nombre_autor = rs.getString("nombre_autor");
+					this.urlImagen=rs.getString("urlimagen");
 					
 				}
 			} catch (SQLException e) {
@@ -81,8 +83,10 @@ public class ColeccionDAO extends Coleccion {
 						//insert 
 						q.setString(1, this.titulo);
 						q.setString(2, this.nombre_autor);
+						q.setString(3, this.urlImagen);
 						//on duplicate
-						q.setString(3, this.nombre_autor);
+						q.setString(4, this.nombre_autor);
+						q.setString(5, this.urlImagen);
 						rs =q.executeUpdate();		
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
@@ -103,6 +107,7 @@ public class ColeccionDAO extends Coleccion {
 				rs =q.executeUpdate();
 				this.titulo = "Desconocido";
 				this.nombre_autor = "Desconocido";
+				this.urlImagen="";
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -127,7 +132,7 @@ public class ColeccionDAO extends Coleccion {
 					Coleccion a=new Coleccion();
 					a.setTitulo(rs.getString("titulo"));
 					a.setnombre_autor(rs.getString("nombre_autor"));
-					
+					a.setUrlImagen("urlimagen");
 					result.add(a);
 				}
 			} catch (SQLException e) {
@@ -151,6 +156,7 @@ public class ColeccionDAO extends Coleccion {
 					Coleccion a=new Coleccion();
 					a.setnombre_autor(rs.getString("nombre_autor"));
 					a.setTitulo(rs.getString("titulo"));
+					a.setUrlImagen(rs.getString("urlimagen"));
 					result.add(a);
 				}
 			} catch (SQLException e) {

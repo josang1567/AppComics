@@ -11,6 +11,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
@@ -57,9 +58,9 @@
             </ScrollPane>
             <ScrollPane>
                <content>
-                  <Pane prefHeight="454.0" prefWidth="234.0" style="-fx-background-color: #989392;">
+                  <Pane prefHeight="598.0" prefWidth="234.0" style="-fx-background-color: #989392;">
                      <children>
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="15.0" prefHeight="18.0" prefWidth="47.0" text="Titulo:">
+                        <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="122.0" prefHeight="18.0" prefWidth="47.0" text="Titulo:">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -70,23 +71,24 @@
                               <Bloom />
                            </effect>
                         </Label>
-                        <Label alignment="TOP_RIGHT" layoutX="32.0" layoutY="89.0" prefHeight="18.0" prefWidth="98.0" text="Estado de lectura:" />
-                        <Label alignment="TOP_RIGHT" layoutX="13.0" layoutY="53.0" prefHeight="18.0" prefWidth="119.0" text="Titulo coleccion:" />
-                        <Label fx:id="TituloLabel" layoutX="157.0" layoutY="16.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
-                        <Label fx:id="LeidoLabel" layoutX="155.0" layoutY="89.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
-                        <Label fx:id="Titulo_coleccionLabel" layoutX="159.0" layoutY="54.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
-                        <Label layoutX="61.0" layoutY="134.0" text="Localizacion:" />
-                        <Label fx:id="LocalizacioLabel" layoutX="159.0" layoutY="134.0" text="Label" />
-                        <Label layoutX="73.0" layoutY="181.0" text="Propiedad:" />
-                        <Label fx:id="propiedadLabel" layoutX="159.0" layoutY="181.0" text="Label" />
-                        <Label layoutX="59.0" layoutY="221.0" text="Tipo de tapa:" />
-                        <Label fx:id="tapaLabel" layoutX="159.0" layoutY="221.0" text="Label" />
-                        <Label layoutX="55.0" layoutY="264.0" text="Tipo de comic:" />
-                        <Label fx:id="tipoLabel" layoutX="159.0" layoutY="264.0" text="Label" />
-                        <Button layoutX="54.0" layoutY="399.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="25.0" prefWidth="127.0" text="Eliminar Comic" />
-                        <Button layoutX="54.0" layoutY="331.0" mnemonicParsing="false" onAction="#localizacion" text="Cambiar Localizacion" />
-                        <Button layoutX="54.0" layoutY="364.0" mnemonicParsing="false" onAction="#propiedad" prefHeight="25.0" prefWidth="127.0" text="Cambiar Propiedad" />
-                        <Button layoutX="54.0" layoutY="298.0" mnemonicParsing="false" onAction="#lectura" text="Cambiar estado lectura" />
+                        <Label alignment="TOP_RIGHT" layoutX="19.0" layoutY="196.0" prefHeight="18.0" prefWidth="98.0" text="Estado de lectura:" />
+                        <Label alignment="TOP_RIGHT" layoutY="160.0" prefHeight="18.0" prefWidth="119.0" text="Titulo coleccion:" />
+                        <Label fx:id="TituloLabel" layoutX="144.0" layoutY="123.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
+                        <Label fx:id="LeidoLabel" layoutX="142.0" layoutY="196.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
+                        <Label fx:id="Titulo_coleccionLabel" layoutX="146.0" layoutY="161.0" prefHeight="17.0" prefWidth="77.0" text="Label" />
+                        <Label layoutX="48.0" layoutY="241.0" text="Localizacion:" />
+                        <Label fx:id="LocalizacioLabel" layoutX="146.0" layoutY="241.0" text="Label" />
+                        <Label layoutX="60.0" layoutY="288.0" text="Propiedad:" />
+                        <Label fx:id="propiedadLabel" layoutX="146.0" layoutY="288.0" text="Label" />
+                        <Label layoutX="46.0" layoutY="328.0" text="Tipo de tapa:" />
+                        <Label fx:id="tapaLabel" layoutX="146.0" layoutY="328.0" text="Label" />
+                        <Label layoutX="42.0" layoutY="371.0" text="Tipo de comic:" />
+                        <Label fx:id="tipoLabel" layoutX="146.0" layoutY="371.0" text="Label" />
+                        <Button layoutX="41.0" layoutY="506.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="25.0" prefWidth="127.0" text="Eliminar Comic" />
+                        <Button layoutX="41.0" layoutY="438.0" mnemonicParsing="false" onAction="#localizacion" text="Cambiar Localizacion" />
+                        <Button layoutX="41.0" layoutY="471.0" mnemonicParsing="false" onAction="#propiedad" prefHeight="25.0" prefWidth="127.0" text="Cambiar Propiedad" />
+                        <Button layoutX="41.0" layoutY="405.0" mnemonicParsing="false" onAction="#lectura" text="Cambiar estado lectura" />
+                        <ImageView fx:id="portada" fitHeight="108.0" fitWidth="200.0" layoutX="16.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </Pane>
                </content>

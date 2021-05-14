@@ -5,6 +5,7 @@ module ProyectoApp.AppComics {
 	requires javafx.base;
 	requires java.desktop;
 	requires jdk.jconsole;
+	requires javafx.graphics;
 	
 
 	opens AppComics.utils to java.xml;

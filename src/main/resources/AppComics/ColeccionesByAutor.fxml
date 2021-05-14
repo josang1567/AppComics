@@ -7,11 +7,11 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
@@ -44,21 +44,17 @@
       </MenuBar>
       <SplitPane dividerPositions="0.5044523597506678" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.200000000000045">
          <items>
-            <ScrollPane>
-               <content>
-                  <TableView fx:id="tablaColecciones" prefHeight="286.0" prefWidth="245.0" style="-fx-background-color: #989392;">
-                     <columns>
-                        <TableColumn fx:id="ColeccionColumna" prefWidth="195.1999939084053" text="Colecciones" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-               </content>
-            </ScrollPane>
+            <TableView fx:id="tablaColecciones" prefHeight="286.0" prefWidth="245.0" style="-fx-background-color: #989392;">
+               <columns>
+                  <TableColumn fx:id="ColeccionColumna" prefWidth="195.1999939084053" text="Colecciones" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
             <Pane prefHeight="567.0" prefWidth="618.0" style="-fx-background-color: #989392;">
                <children>
-                  <Label alignment="CENTER_RIGHT" layoutX="27.0" layoutY="37.0" prefHeight="18.0" prefWidth="47.0" text="Titulo:">
+                  <Label alignment="CENTER_RIGHT" layoutX="65.0" layoutY="118.0" prefHeight="18.0" prefWidth="47.0" text="Titulo:">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
@@ -69,14 +65,15 @@
                         <Bloom />
                      </effect>
                   </Label>
-                  <Label layoutX="35.0" layoutY="114.0" text="Creador:" />
-                  <Label fx:id="CreadorLabel" layoutX="116.0" layoutY="114.0" text="Label" />
-                  <Button fx:id="Titulobutton" layoutX="106.0" layoutY="34.0" mnemonicParsing="false" onAction="#switchToComicsbycodigo" style="-fx-background-color: #989392;" text="Button">
+                  <Label layoutX="73.0" layoutY="195.0" text="Creador:" />
+                  <Label fx:id="CreadorLabel" layoutX="154.0" layoutY="195.0" text="Label" />
+                  <Button fx:id="Titulobutton" layoutX="144.0" layoutY="115.0" mnemonicParsing="false" onAction="#switchToComicsbycodigo" style="-fx-background-color: #989392;" text="Button">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
                   <Button layoutX="74.0" layoutY="231.0" mnemonicParsing="false" onAction="#eliminarColeccion" onTouchReleased="#switchToColecciones" text="Eliminar Coleccion" />
+                  <ImageView fx:id="portada" fitHeight="116.0" fitWidth="193.0" layoutX="50.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
          </items>

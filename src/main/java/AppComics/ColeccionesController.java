@@ -2,6 +2,7 @@ package AppComics;
 
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
@@ -15,6 +16,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class ColeccionesController {
 	static ColeccionDAO coleccion= new ColeccionDAO();
@@ -26,6 +29,8 @@ public class ColeccionesController {
 	private TableView<Coleccion> tablaColecciones;
 	@FXML
 	private TableColumn<Coleccion, String> ColeccionColumna;
+	@FXML
+	private ImageView portada;
 	
 
 	// ir a todas las colecciones
@@ -77,6 +82,7 @@ public class ColeccionesController {
 	
 	@FXML
 	protected void initialize() {
+	
 		System.out.println("Cargando...");
 		muestraInfo(null);
 		configuraTabla();
@@ -100,12 +106,20 @@ public class ColeccionesController {
 	
 	
 	private void muestraInfo(Coleccion c) {
+		portada.setVisible(true);
+		
 		if(c!=null) {
 			Titulobutton.setText(c.getTitulo());
 			CreadorLabel.setText(c.getnombre_autor());
+			File f=new File("file:"+c.getUrlImagen());
+			Image cportada= new Image (f.getPath());
+            portada.setImage(cportada);
 		}else {
 			Titulobutton.setText("Desconocido");
 			CreadorLabel.setText("Desconocido");
+			File f=new File("file: src/main/resources/Imagenes/Colecciones/vacio.png");
+			Image cportada= new Image (f.getPath());
+			portada.setImage(cportada);
 		}
 	}
 	@FXML

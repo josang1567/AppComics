@@ -1,5 +1,6 @@
 package AppComics;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -11,6 +12,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.collections.FXCollections;
 
 public class ComicController {
@@ -72,7 +75,9 @@ public class ComicController {
 	private TableView<Comic> tablacomics;
 	@FXML
 	private TableColumn<Comic, String> ComicColumna;
-
+	@FXML
+	private ImageView portada;
+	
 	@FXML
 	protected void initialize() {
 		System.out.println("Cargando...");
@@ -107,13 +112,21 @@ public class ComicController {
 			propiedadLabel.setText(c.propiedad(c.isPropiedad()));
 			tapaLabel.setText(c.getTapa());
 			tipoLabel.setText(c.getTipo());
+			File f=new File("file:"+c.getUrlImagen());
+			Image cportada= new Image (f.getPath());
+            portada.setImage(cportada);
 
 		} else {
 			TituloLabel.setText("Desconocido");
 			LeidoLabel.setText("Desconocido");
+			LocalizacioLabel.setText("Desconocido");
+			propiedadLabel.setText("Desconocido");
 			Titulo_coleccionLabel.setText("Ninguno");
 			tapaLabel.setText("Ninguno");
-
+			tipoLabel.setText("Desconocido");
+			File f=new File("file: src/main/resources/Imagenes/Colecciones/vacio.png");
+			Image cportada= new Image (f.getPath());
+			portada.setImage(cportada);
 		}
 	}
 
