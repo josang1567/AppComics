@@ -37,6 +37,7 @@ public class ColeccionesController {
 	// ir a todas las colecciones
 	@FXML
 	private void switchToColecciones() throws IOException {
+		Utils.tipopestaña="todos";
 		App.setRoot("secondary");
 	}
 

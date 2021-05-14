@@ -64,6 +64,7 @@ public class CrearComicController {
 	
 	@FXML
 	private void cancelar() throws IOException {
+		Utils.tipopestaña="todos";
 		App.setRoot("primary");
 	}
 
@@ -123,6 +124,7 @@ public class CrearComicController {
 		mostrarAlertInfo();
 
 		// vuelve a la escena de comic
+		Utils.tipopestaña="todos";
 		App.setRoot("primary");
 	}
 

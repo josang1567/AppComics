@@ -49,6 +49,7 @@ public class CrearColeccionController {
 
 	@FXML
 	private void cancelar() throws IOException {
+		Utils.tipopestaña="todos";
 		App.setRoot("secondary");
 	}
 
@@ -64,6 +65,7 @@ public class CrearColeccionController {
 		cd.setUrlImagen(direccionurl + cd.getTitulo() + ".jpg");
 		cd.guardar();
 		mostrarAlertInfo();
+		Utils.tipopestaña="todos";
 		App.setRoot("secondary");
 	}
 

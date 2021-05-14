@@ -56,7 +56,7 @@
                   <Label fx:id="NombreLabel" layoutX="161.0" layoutY="26.0" prefHeight="19.0" prefWidth="84.0" style="-fx-background-color: white;" text="Label" />
                   <Label fx:id="DescripcionLabel" layoutX="167.0" layoutY="83.0" style="-fx-background-color: white;" text="Label" />
                   <Button layoutX="128.0" layoutY="213.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar autor" />
-                  <Button layoutX="161.0" layoutY="132.0" mnemonicParsing="false" onAction="#iraobras" style="-fx-background-color: #989392;" text="Ver obras" />
+                  <Button layoutX="161.0" layoutY="132.0" mnemonicParsing="false" onAction="#iraobras" text="Ver obras" />
                </children>
             </Pane>
          </items>

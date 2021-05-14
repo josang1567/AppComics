@@ -1,16 +1,23 @@
 package AppComics;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 import AppComics.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class InicioController {
 	// ir a todas las colecciones
 	@FXML
+	private ImageView portada;
+
+	@FXML
 	private void switchToColecciones() throws IOException {
-		Utils.tipopestaña="todos";
+		Utils.tipopestaña = "todos";
 		App.setRoot("secondary");
 	}
 
@@ -23,35 +30,35 @@ public class InicioController {
 	// ir a todos comics
 	@FXML
 	private void switchToComics() throws IOException {
-		Utils.tipopestaña="todos";
+		Utils.tipopestaña = "todos";
 		App.setRoot("primary");
 	}
 
 	// ir a los comics en propiedad
 	@FXML
 	private void switchToPropiedad() throws IOException {
-		Utils.tipopestaña="propiedad";
+		Utils.tipopestaña = "propiedad";
 		App.setRoot("primary");
 	}
 
 	// ir a los comics en lista de deseos
 	@FXML
 	private void switchToDeseos() throws IOException {
-		Utils.tipopestaña="deseos";
+		Utils.tipopestaña = "deseos";
 		App.setRoot("primary");
 	}
 
 	// ir a los comics en casa
 	@FXML
 	private void switchToCasa() throws IOException {
-		Utils.tipopestaña="casa";
+		Utils.tipopestaña = "casa";
 		App.setRoot("primary");
 	}
 
 	// ir a los comics prestados
 	@FXML
 	private void switchToPrestado() throws IOException {
-		Utils.tipopestaña="prestado";
+		Utils.tipopestaña = "prestado";
 		App.setRoot("primary");
 	}
 
@@ -73,4 +80,13 @@ public class InicioController {
 		alert.showAndWait();
 	}
 
+	protected void initialize() {
+
+		String direccion = "src/main/resources/Imagenes/Logo/Logo.png";
+		portada.setVisible(true);
+		File f = new File("file:" + direccion);
+		System.out.println(direccion);
+		Image cportada = new Image(f.getPath());
+		portada.setImage(cportada);
+	}
 }

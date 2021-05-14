@@ -32,6 +32,7 @@ public class AutorSceneController {
 	// ir a todas las colecciones
 	@FXML
 	private void switchToColecciones() throws IOException {
+		Utils.tipopestaña="todos";
 		App.setRoot("secondary");
 	}
 
@@ -44,6 +45,7 @@ public class AutorSceneController {
 	// ir a los comics
 	@FXML
 	private void switchToComics() throws IOException {
+		Utils.tipopestaña="todos";
 		App.setRoot("primary");
 	}
 

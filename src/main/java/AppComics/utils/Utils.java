@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class Utils {
 	public static Object dato;
-	public static String tipopestaña;
+	public static String tipopestaña="";
 	public static boolean incluyepalabra(String palabra1, String palabra2) {
 		boolean encontrado=false;
 		Pattern pat = Pattern.compile(".*"+palabra1+".*");
