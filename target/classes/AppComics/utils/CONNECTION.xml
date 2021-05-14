@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standlone="yes"?>
+<DataConnection>
+	<host>localhost</host>
+	<db>colecciones</db>
+	<root>colecciones</root>
+	<password></password>
+	<type> mysql </type>
+</DataConnection>

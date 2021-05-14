@@ -2,6 +2,7 @@ package AppComics;
 
 import java.io.IOException;
 
+import AppComics.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 
@@ -9,6 +10,7 @@ public class InicioController {
 	// ir a todas las colecciones
 	@FXML
 	private void switchToColecciones() throws IOException {
+		Utils.tipopestaña="todos";
 		App.setRoot("secondary");
 	}
 
@@ -21,31 +23,36 @@ public class InicioController {
 	// ir a todos comics
 	@FXML
 	private void switchToComics() throws IOException {
+		Utils.tipopestaña="todos";
 		App.setRoot("primary");
 	}
 
 	// ir a los comics en propiedad
 	@FXML
 	private void switchToPropiedad() throws IOException {
-		App.setRoot("ComicsByPropiedad");
+		Utils.tipopestaña="propiedad";
+		App.setRoot("primary");
 	}
 
 	// ir a los comics en lista de deseos
 	@FXML
 	private void switchToDeseos() throws IOException {
-		App.setRoot("ComicsByDeseos");
+		Utils.tipopestaña="deseos";
+		App.setRoot("primary");
 	}
 
 	// ir a los comics en casa
 	@FXML
 	private void switchToCasa() throws IOException {
-		App.setRoot("ComicsByLocalizacion");
+		Utils.tipopestaña="casa";
+		App.setRoot("primary");
 	}
 
 	// ir a los comics prestados
 	@FXML
 	private void switchToPrestado() throws IOException {
-		App.setRoot("ComicsByPrestado");
+		Utils.tipopestaña="prestado";
+		App.setRoot("primary");
 	}
 
 	@FXML

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="470.0" style="-fx-background-color: #989392; -fx-border-color: black; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppComics.EditarColeccionController">
+   <children>
+      <Label alignment="CENTER" layoutX="28.0" layoutY="48.0" prefHeight="38.0" prefWidth="195.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2,4;" text="Inserte el titulo del la coleccion:" />
+      <Label alignment="CENTER" layoutX="26.0" layoutY="97.0" prefHeight="40.0" prefWidth="195.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2,4;" text="Nombre del Autor:" />
+      <Button layoutX="109.0" layoutY="347.0" mnemonicParsing="false" onAction="#switchToColecciones" onTouchReleased="#switchToColecciones" text="Guardar Coleccion" />
+      <Label alignment="CENTER" layoutX="4.0" layoutY="5.0" prefHeight="17.0" prefWidth="461.0" style="-fx-background-color: white;" text="Creacion de colección" />
+      <Button layoutX="261.0" layoutY="346.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+      <ComboBox fx:id="NombresAutor" layoutX="265.0" layoutY="98.0" prefHeight="38.0" prefWidth="175.0" />
+      <ComboBox fx:id="titulotext" layoutX="265.0" layoutY="48.0" prefHeight="38.0" prefWidth="175.0" />
+      <ImageView fx:id="portadaimage" fitHeight="121.0" fitWidth="154.0" layoutX="276.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="urltext" editable="false" layoutX="351.0" layoutY="186.0" prefHeight="25.0" prefWidth="96.0" />
+      <Button fx:id="verimagen" layoutX="231.0" layoutY="185.0" mnemonicParsing="false" onAction="#selecImagen" text="Seleccionar Portada" />
+      <Label layoutX="173.0" layoutY="255.0" text="Vista previa:" textFill="#d72020">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="28.0" layoutY="178.0" prefHeight="40.0" prefWidth="195.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2,4;" text="Seleccionar portada" />
+   </children>
+</Pane>

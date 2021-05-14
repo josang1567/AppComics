@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #989392;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppComics.InicioController">
+   <children>
+      <MenuBar layoutX="175.0" layoutY="64.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Autores">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#switchToAutores" text="Ver todos los autores" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Colecciones">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#switchToColecciones" text="Ver todos las colecciones" />
+               </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Comics">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#switchToComics" text="Ver todos los comics" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToPropiedad" text="Ver comics en posesion" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToDeseos" text="Ver todos en lista de deseos" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToCasa" text="Ver todos los comics en casa" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToPrestado" text="Ver todos los comics prestados" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Ayuda">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#comousar" text="Ir a ayuda" />
+              <MenuItem mnemonicParsing="false" onAction="#ayuda" text="Mas ayuda" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label alignment="CENTER" layoutY="27.0" lineSpacing="4.0" prefHeight="373.0" prefWidth="600.0" text="Bienvenido " textAlignment="JUSTIFY" textFill="#df0808" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
+         <font>
+            <Font name="Bradley Hand ITC" size="83.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

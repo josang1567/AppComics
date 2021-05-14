@@ -4,6 +4,7 @@ package AppComics;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import AppComics.model.Coleccion;
@@ -51,11 +52,13 @@ public class ColeccionesController {
 		App.setRoot("CrearColeccion");
 	}
 
-	// ir a los comics
-	@FXML
-	private void switchToComics() throws IOException {
-		App.setRoot("primary");
-	}
+	// ir a todos comics
+		@FXML
+		private void switchToComics() throws IOException {
+			Utils.tipopestaña="todos";
+			App.setRoot("primary");
+		}
+
 	// ir a crear inicio
 			@FXML
 			private void switchToInicio() throws IOException {
@@ -65,7 +68,8 @@ public class ColeccionesController {
 		@FXML
 		private void switchToComicsbycodigo() throws IOException {
 			Utils.dato=Titulobutton.getText();
-			App.setRoot("ComicsByCode");
+			Utils.tipopestaña="codigo";
+			App.setRoot("primary");
 			
 		}
 		//ir a editar
@@ -83,11 +87,23 @@ public class ColeccionesController {
 	@FXML
 	protected void initialize() {
 	
+	List<Coleccion> todas= new ArrayList<Coleccion>();
 		System.out.println("Cargando...");
 		muestraInfo(null);
 		configuraTabla();
 		// Cargar de la base de datos!!!!!
-		List<Coleccion> todas = ColeccionDAO.buscartodos();
+		switch (Utils.tipopestaña) {
+		case "todos":
+			 todas = ColeccionDAO.buscartodos();
+			break;
+		case "por autor":
+			 todas = ColeccionDAO.buscaPorNombre(Utils.dato.toString());
+			break;
+		
+		default:
+			break;
+		}
+		
 		tablaColecciones.setItems(FXCollections.observableArrayList(todas));
 		tablaColecciones.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue)->{
 			muestraInfo(newValue);

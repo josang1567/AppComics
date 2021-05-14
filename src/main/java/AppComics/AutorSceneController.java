@@ -40,25 +40,30 @@ public class AutorSceneController {
 	private void switchToAutores() throws IOException {
 		App.setRoot("AutorScene");
 	}
+
 	// ir a los comics
 	@FXML
 	private void switchToComics() throws IOException {
 		App.setRoot("primary");
 	}
+
 	@FXML
-	private void switchtocrear() throws IOException{
+	private void switchtocrear() throws IOException {
 		App.setRoot("CrearAutorScene");
 	}
+
 	// ir a crear inicio
-			@FXML
-			private void switchToInicio() throws IOException {
-				App.setRoot("Inicio");
-			}
-			//ir a editar
 	@FXML
-	private void switchtoeditar() throws IOException{
+	private void switchToInicio() throws IOException {
+		App.setRoot("Inicio");
+	}
+
+	// ir a editar
+	@FXML
+	private void switchtoeditar() throws IOException {
 		App.setRoot("EditarAutor");
 	}
+
 	@FXML
 	protected void initialize() {
 		System.out.println("Cargando...");
@@ -83,7 +88,6 @@ public class AutorSceneController {
 	private void muestraInfo(Autor a) {
 		if (a != null) {
 
-			
 			if (NombreLabel != null) {
 				NombreLabel.setText(a.getNombre());
 			} else {
@@ -94,24 +98,26 @@ public class AutorSceneController {
 			} else {
 				DescripcionLabel.setText("No hay informacion");
 			}
-			
+
 		} else {
 			NombreLabel.setText("Desconocido");
 			DescripcionLabel.setText("No hay informacion");
-			
+
 		}
 	}
 
 	@FXML
-	private void eliminar() throws IOException{
+	private void eliminar() throws IOException {
 		autor.setNombre(this.NombreLabel.getText());
 		autor.eliminar();
 		App.setRoot("AutorScene");
 	}
+
 	@FXML
-	private void iraobras() throws IOException{
-		Utils.dato=NombreLabel.getText();
-		App.setRoot("ColeccionesByAutor");
+	private void iraobras() throws IOException {
+		Utils.dato = NombreLabel.getText();
+		Utils.tipopestaña="por autor";
+		App.setRoot("Secondary");
 	}
 
 	@FXML

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="391.0" prefWidth="421.0" style="-fx-background-color: #989392; -fx-border-color: black; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppComics.EditarAutorController">
+   <children>
+      <Label alignment="CENTER" layoutX="4.0" layoutY="4.0" prefHeight="17.0" prefWidth="412.0" style="-fx-background-color: white;" text="Editar  Autor" />
+      <Label alignment="CENTER" layoutX="42.0" layoutY="44.0" prefHeight="38.0" prefWidth="159.0" style="-fx-background-color: white;" text="Inserte el nombre del autor:" />
+      <Label alignment="CENTER" layoutX="42.0" layoutY="126.0" prefHeight="39.0" prefWidth="159.0" style="-fx-background-color: white;" text="Descripcion" />
+      <Button layoutX="95.0" layoutY="259.0" mnemonicParsing="false" onAction="#guardarautor" text="Guardar Autor" />
+      <TextArea fx:id="DescripcionText" layoutX="237.0" layoutY="126.0" prefHeight="40.0" prefWidth="159.0" />
+      <Button layoutX="246.0" layoutY="259.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+      <ComboBox fx:id="nombrebox" layoutX="242.0" layoutY="51.0" prefWidth="150.0" />
+   </children>
+</Pane>

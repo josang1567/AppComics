@@ -2,10 +2,12 @@ package AppComics;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import AppComics.model.Comic;
 import AppComics.model.ComicDao;
+import AppComics.utils.Utils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -34,9 +36,10 @@ public class ComicController {
 		App.setRoot("AutorScene");
 	}
 
-	// ir a los comics
+	// ir a todos comics
 	@FXML
 	private void switchToComics() throws IOException {
+		Utils.tipopestaña = "todos";
 		App.setRoot("primary");
 	}
 
@@ -45,11 +48,13 @@ public class ComicController {
 	private void switchToCrearComic() throws IOException {
 		App.setRoot("CrearComicScene");
 	}
-	//ir a editar
+
+	// ir a editar
 	@FXML
-	private void switchtoeditar() throws IOException{
+	private void switchtoeditar() throws IOException {
 		App.setRoot("EditarComic");
 	}
+
 	// ir a crear inicio
 	@FXML
 	private void switchToInicio() throws IOException {
@@ -77,15 +82,37 @@ public class ComicController {
 	private TableColumn<Comic, String> ComicColumna;
 	@FXML
 	private ImageView portada;
-	
+
 	@FXML
 	protected void initialize() {
+		List<Comic> todas = new ArrayList<Comic>();
 		System.out.println("Cargando...");
 		muestraInfo(null);
 		configuraTabla();
 		// Cargar de la base de datos!!!!!
-
-		List<Comic> todas = ComicDao.mostrartodos();
+		switch (Utils.tipopestaña) {
+		case "todos":
+			todas = ComicDao.mostrartodos();
+			break;
+		case "propiedad":
+			todas = ComicDao.buscaPorPropiedad(true);
+			break;
+		case "deseos":
+			todas = ComicDao.buscaPorPropiedad(false);
+			break;
+		case "casa":
+			todas = ComicDao.buscaPorLocalizacion(true);
+			break;
+		case "prestado":
+			todas = ComicDao.buscaPorLocalizacion(false);
+			break;
+		case "codigo":
+			todas = ComicDao.buscaPorcoleccion((String) Utils.dato);
+			break;
+		default:
+			break;
+		}
+		todas = ComicDao.mostrartodos();
 		tablacomics.setItems(FXCollections.observableArrayList(todas));
 		tablacomics.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 			muestraInfo(newValue);
@@ -112,9 +139,9 @@ public class ComicController {
 			propiedadLabel.setText(c.propiedad(c.isPropiedad()));
 			tapaLabel.setText(c.getTapa());
 			tipoLabel.setText(c.getTipo());
-			File f=new File("file:"+c.getUrlImagen());
-			Image cportada= new Image (f.getPath());
-            portada.setImage(cportada);
+			File f = new File("file:" + c.getUrlImagen());
+			Image cportada = new Image(f.getPath());
+			portada.setImage(cportada);
 
 		} else {
 			TituloLabel.setText("Desconocido");
@@ -124,8 +151,8 @@ public class ComicController {
 			Titulo_coleccionLabel.setText("Ninguno");
 			tapaLabel.setText("Ninguno");
 			tipoLabel.setText("Desconocido");
-			File f=new File("file: src/main/resources/Imagenes/Colecciones/vacio.png");
-			Image cportada= new Image (f.getPath());
+			File f = new File("file: src/main/resources/Imagenes/Colecciones/vacio.png");
+			Image cportada = new Image(f.getPath());
 			portada.setImage(cportada);
 		}
 	}
@@ -160,7 +187,7 @@ public class ComicController {
 
 	@FXML
 	private void propiedad() throws IOException {
-		
+
 		cd.setTitulo(TituloLabel.getText());
 		cd.setLeido(cambialeido(LeidoLabel.getText()));
 		cd.setTitulo_coleccion(Titulo_coleccionLabel.getText());
@@ -181,7 +208,7 @@ public class ComicController {
 
 	@FXML
 	private void localizacion() throws IOException {
-		
+
 		cd.setTitulo(TituloLabel.getText());
 		cd.setLeido(cambialeido(LeidoLabel.getText()));
 		cd.setTitulo_coleccion(Titulo_coleccionLabel.getText());
@@ -194,7 +221,6 @@ public class ComicController {
 		} else if (cd.isLocalizacion() == true) {
 			cd.setLocalizacion(false);
 		}
-		
 
 		cd.guardar();
 		App.setRoot("primary");
