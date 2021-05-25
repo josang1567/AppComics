@@ -108,12 +108,12 @@ public class ComicController {
 			todas = ComicDao.buscaPorLocalizacion(false);
 			break;
 		case "codigo":
+			System.out.println(Utils.dato);
 			todas = ComicDao.buscaPorcoleccion((String) Utils.dato);
 			break;
 		default:
 			break;
 		}
-		todas = ComicDao.mostrartodos();
 		tablacomics.setItems(FXCollections.observableArrayList(todas));
 		tablacomics.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 			muestraInfo(newValue);
@@ -175,7 +175,6 @@ public class ComicController {
 		cd.setPropiedad(cambiapropi(propiedadLabel.getText()));
 		cd.setTapa(tapaLabel.getText());
 		cd.setTipo(tipoLabel.getText());
-
 		if (cd.isLeido() == false) {
 			cd.setLeido(true);
 		} else if (cd.isLeido() == true) {
@@ -241,8 +240,7 @@ public class ComicController {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setHeaderText(null);
 		alert.setTitle("Editar");
-		alert.setContentText("Para editar los datos de una coleccion ya existente debes ir a crear "
-				+ "y si el codigo coincide con una ya existente se sobreescribira encima.");
+		alert.setContentText("Para editar los todos datos de una coleccion ya existente debes ir a editar ");
 		alert.showAndWait();
 	}
 

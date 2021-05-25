@@ -7,14 +7,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import AppComics.utils.SaveAndLoad;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
  
-	static SaveAndLoad snl = SaveAndLoad.getSingletoonInstance();
 	
     private static Scene scene;
 

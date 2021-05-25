@@ -32,7 +32,7 @@ public class AutorSceneController {
 	// ir a todas las colecciones
 	@FXML
 	private void switchToColecciones() throws IOException {
-		Utils.tipopestaña="todos";
+		Utils.tipopestaña = "todos";
 		App.setRoot("secondary");
 	}
 
@@ -45,7 +45,7 @@ public class AutorSceneController {
 	// ir a los comics
 	@FXML
 	private void switchToComics() throws IOException {
-		Utils.tipopestaña="todos";
+		Utils.tipopestaña = "todos";
 		App.setRoot("primary");
 	}
 
@@ -73,6 +73,7 @@ public class AutorSceneController {
 		configuraTabla();
 		// Cargar de la base de datos!!!!!
 		List<Autor> todos = AutorDAO.mostrartodos();
+
 		tablaAutores.setItems(FXCollections.observableArrayList(todos));
 		tablaAutores.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 			muestraInfo(newValue);
@@ -117,8 +118,8 @@ public class AutorSceneController {
 
 	@FXML
 	private void iraobras() throws IOException {
-		Utils.dato = NombreLabel.getText();
-		Utils.tipopestaña="por autor";
+		Utils.dato = this.NombreLabel.getText();
+		Utils.tipopestaña = "por autor";
 		App.setRoot("Secondary");
 	}
 
@@ -145,8 +146,7 @@ public class AutorSceneController {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setHeaderText(null);
 		alert.setTitle("Editar");
-		alert.setContentText("Para editar los datos de una coleccion ya existente debes ir a crear "
-				+ "y si el codigo coincide con una ya existente se sobreescribira encima.");
+		alert.setContentText("Para editar los datos de una coleccion ya existente debes ir a crear ");
 		alert.showAndWait();
 	}
 }

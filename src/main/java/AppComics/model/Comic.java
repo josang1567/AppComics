@@ -10,7 +10,7 @@ public class Comic {
 	protected String tapa;
 	protected String tipo;
 	protected String urlImagen;
-	
+	protected Coleccion coleccion;
 	
 	public Comic(String titulo, boolean leido, String titulo_coleccion, boolean localizacion,
 			boolean propiedad, String tapa, String tipo,String urlImagen) {
@@ -138,4 +138,12 @@ public class Comic {
 		return estado;
 	}
 
+	public Coleccion getColeccion() {
+		return coleccion;
+	}
+
+	public void setColeccion(Coleccion coleccion) {
+		this.coleccion = coleccion;
+	}
+	
 }

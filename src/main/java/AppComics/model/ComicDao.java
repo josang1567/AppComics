@@ -8,11 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import AppComics.utils.SaveAndLoad;
 import AppComics.utils.conexion;
 
 public class ComicDao extends Comic {
-	static SaveAndLoad snl = SaveAndLoad.getSingletoonInstance();
 	// codigo para mostrar todos los comics
 	private final static String GETALL = "SELECT * from comic";
 
@@ -25,16 +23,17 @@ public class ComicDao extends Comic {
 	private final static String DELETE = "DELETE FROM comic WHERE titulo=?";
 
 	// seleccionar por nombre
-	private final static String SELECTBYTITLE = "SELECT * FROM comic WHERE  titulo like ?";
+	private final static String SELECTBYTITLE = "SELECT * FROM comic WHERE  titulo = ?";
 
 	// seleccionar por propiedad
-	private final static String SELECTBYLOCALIZACION = "SELECT * FROM comic WHERE  localizacion like ?";
+	private final static String SELECTBYLOCALIZACION = "SELECT * FROM comic WHERE  localizacion = ?";
 
 	// seleccionar por propiedad
-	private final static String SELECTBYPROPIEDAD = "SELECT * FROM comic WHERE  propiedad like ?";
+	private final static String SELECTBYPROPIEDAD = "SELECT * FROM comic WHERE  propiedad = ?";
 
+	
 	// selecciona las coleccion con el titulo de la coleccion igual
-	private final static String SELECTBYCOLECCION = "SELECT * FROM comic WHERE  titulo_coleccion like ?";
+	private final static String SELECTBYCOLECCION = "SELECT * FROM comic WHERE  titulo_coleccion = ?";
 	
 	//update estado lectura a true
 	private final static String updatelecturatrue="UPDATE comic set leido=1 where titulo=?";
@@ -137,7 +136,6 @@ public class ComicDao extends Comic {
 				e.printStackTrace();
 			}
 		}
-		snl.saveComics(ComicDao.mostrartodos());
 		return rs;
 	}
 
@@ -164,7 +162,6 @@ public class ComicDao extends Comic {
 				e.printStackTrace();
 			}
 		}
-		snl.saveComics(ComicDao.mostrartodos());
 		return rs;
 	}
 
@@ -187,6 +184,7 @@ public class ComicDao extends Comic {
 					a.setTapa(rs.getString("tapa"));
 					a.setTipo(rs.getString("tipo"));
 					a.setUrlImagen(rs.getString("urlimagen"));
+					a.setColeccion(ColeccionDAO.buscarpornombre(rs.getString("titulo_coleccion")));
 					result.add(a);
 				}
 			} catch (SQLException e) {
@@ -199,15 +197,17 @@ public class ComicDao extends Comic {
 	}
 
 	public static List<Comic> buscaPorcoleccion(String coleccion) {
+		System.out.println("BUSCandpo");
 		List<Comic> result = new ArrayList<Comic>();
 		Connection con = conexion.getConexion();
 		if (con != null) {
 			try {
 				PreparedStatement q = con.prepareStatement(SELECTBYCOLECCION);
-				q.setString(1, "%" + coleccion + "%");
+				q.setString(1, coleccion);
 				ResultSet rs = q.executeQuery();
 				while (rs.next()) {
-
+					System.out.println(coleccion);
+					System.out.println("AQUIII");
 					Comic a = new Comic();
 					a.setTitulo(rs.getString("Titulo"));
 					a.setLeido(rs.getBoolean("Leido"));
@@ -224,7 +224,6 @@ public class ComicDao extends Comic {
 				e.printStackTrace();
 			}
 		}
-
 		return result;
 	}
 

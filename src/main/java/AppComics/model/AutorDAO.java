@@ -8,12 +8,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import AppComics.utils.SaveAndLoad;
 import AppComics.utils.conexion;
 
 
 public class AutorDAO extends Autor {
-	static SaveAndLoad snl = SaveAndLoad.getSingletoonInstance();
 	//codigo para mostrar todos
 	private final static String GETALL="SELECT * FROM autor";
 	
@@ -32,7 +30,7 @@ public class AutorDAO extends Autor {
 	private final static String SELECTBYNAME = "SELECT * FROM autor WHERE  nombre like ?";
 
 	public AutorDAO(String nombre, int edad, String dni, String descripcion, List<Coleccion> obras) {
-		super(nombre,  descripcion);
+		super(nombre,  descripcion, obras);
 	}
 
 	public AutorDAO() {
@@ -86,15 +84,13 @@ public class AutorDAO extends Autor {
 						e.printStackTrace();
 					}
 				}
-				snl.saveAutores(AutorDAO.mostrartodos());
+				
 				return rs;
 	}
 
 	
 	
-	public static List<Coleccion> buscarcoleccionesporautor(String nombre){
-		return null;
-	}
+	
 	
 	public int eliminar() {
 		int rs=0;
@@ -107,18 +103,19 @@ public class AutorDAO extends Autor {
 				rs =q.executeUpdate();
 				this.nombre = "Desconocido";
 				this.Descripcion = "Desconocido";
+				this.colecciones=null;
 		
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		snl.saveAutores(AutorDAO.mostrartodos());
+		
 		return rs;
 	}
 
-	public static List<Autor> buscaPorNombre(String nombre) {
-		List<Autor> result=new ArrayList<Autor>();
+	public static Autor buscaPorNombre(String nombre) {
+		Autor result=new Autor();
 		Connection con = conexion.getConexion();
 		if (con != null) {
 			try {
@@ -130,8 +127,8 @@ public class AutorDAO extends Autor {
 					Autor a=new Autor();
 					a.setNombre(rs.getString("nombre"));
 					a.setDescripcion(rs.getString("descripcion"));
-					
-					result.add(a);
+					a.setColecciones(new ArrayList<Coleccion>());
+					result=a;
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -157,7 +154,8 @@ public class AutorDAO extends Autor {
 							Autor nuevo= new Autor();
 							nuevo.setNombre(rs.getString("nombre"));
 							nuevo.setDescripcion(rs.getString("descripcion"));
-							
+							nuevo.setColecciones(ColeccionDAO.buscarporautor(rs.getString("nombre")));
+
 							todos.add(nuevo);
 						}
 					} catch (SQLException e) {
@@ -172,6 +170,5 @@ public class AutorDAO extends Autor {
 		return todos;
 		
 	}
-	
 	
 }

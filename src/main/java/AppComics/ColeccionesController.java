@@ -5,8 +5,10 @@ package AppComics;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
+import AppComics.model.Autor;
 import AppComics.model.Coleccion;
 import AppComics.model.ColeccionDAO;
 import AppComics.utils.Utils;
@@ -68,7 +70,9 @@ public class ColeccionesController {
 	// ir a los comics de este codigo
 		@FXML
 		private void switchToComicsbycodigo() throws IOException {
-			Utils.dato=Titulobutton.getText();
+			//Utils.dato=Titulobutton.getText();
+			Utils.dato=this.Titulobutton.getText();
+			System.out.println(this.Titulobutton.getText());
 			Utils.tipopestaña="codigo";
 			App.setRoot("primary");
 			
@@ -82,6 +86,7 @@ public class ColeccionesController {
 	private void eliminarColeccion()throws IOException{
 		coleccion.setTitulo(this.Titulobutton.getText());
 		coleccion.eliminar();
+	
 		App.setRoot("secondary");
 	}
 	
@@ -98,10 +103,11 @@ public class ColeccionesController {
 			 todas = ColeccionDAO.buscartodos();
 			break;
 		case "por autor":
-			 todas = ColeccionDAO.buscaPorNombre(Utils.dato.toString());
+			 todas = ColeccionDAO.buscarporautor((String) Utils.dato);
 			break;
 		
 		default:
+			 todas = ColeccionDAO.buscartodos();
 			break;
 		}
 		
@@ -110,6 +116,8 @@ public class ColeccionesController {
 			muestraInfo(newValue);
 		});
 	}
+	
+	
 	
 	private void configuraTabla() {
 
@@ -152,8 +160,7 @@ public class ColeccionesController {
 	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
 	    alert.setHeaderText(null);
 	    alert.setTitle("Editar");
-	    alert.setContentText("Para editar los datos de una coleccion ya existente debes ir a crear "
-	    		+ "y si el codigo coincide con una ya existente se sobreescribira encima.");
+	    alert.setContentText("Para editar los datos de una coleccion ya existente debes ir a editar ");
 	    alert.showAndWait();
 	}
 	@FXML

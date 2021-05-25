@@ -9,9 +9,17 @@ import java.io.OutputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import AppComics.model.Autor;
+import AppComics.model.Coleccion;
+import AppComics.model.Comic;
+
 public class Utils {
 	public static Object dato;
 	public static String tipopestaña="";
+	
+	
+	
+	
 	public static boolean incluyepalabra(String palabra1, String palabra2) {
 		boolean encontrado=false;
 		Pattern pat = Pattern.compile(".*"+palabra1+".*");
@@ -24,6 +32,8 @@ public class Utils {
 
 		return encontrado;
 	}
+	
+	
 	public static void saveImage(String filePath, String destinationPath) {
         InputStream input = null;
         OutputStream output = null;
