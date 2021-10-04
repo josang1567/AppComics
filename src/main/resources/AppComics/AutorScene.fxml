@@ -9,7 +9,9 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="707.0" style="-fx-border-color: black; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppComics.AutorSceneController">
    <children>
@@ -48,17 +50,27 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Pane prefHeight="426.0" prefWidth="299.0" style="-fx-background-color: #989392;">
+            <GridPane style="-fx-background-color: #989392;">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="80.0" prefHeight="23.0" prefWidth="103.0" style="-fx-background-color: #F7EEEC; -fx-border-color: black; -fx-border-width: 2.5;" text="Descripcion:" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="133.0" prefHeight="23.0" prefWidth="103.0" style="-fx-background-color: #F7EEEC; -fx-border-color: black; -fx-border-width: 2.5;" text="Obras conocidas:" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="24.0" prefHeight="23.0" prefWidth="103.0" style="-fx-background-color: #F7EEEC; -fx-border-color: black; -fx-border-width: 2.5;" text="Nombre:" />
-                  <Label fx:id="NombreLabel" layoutX="161.0" layoutY="26.0" prefHeight="19.0" prefWidth="84.0" style="-fx-background-color: white;" text="Label" />
-                  <Label fx:id="DescripcionLabel" layoutX="167.0" layoutY="83.0" style="-fx-background-color: white;" text="Label" />
-                  <Button layoutX="128.0" layoutY="213.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar autor" />
-                  <Button layoutX="161.0" layoutY="132.0" mnemonicParsing="false" onAction="#iraobras" text="Ver obras" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="103.0" style="-fx-background-color: #F7EEEC; -fx-border-color: black; -fx-border-width: 2.5;" text="Nombre:" />
+                  <Label fx:id="NombreLabel" prefHeight="19.0" prefWidth="84.0" style="-fx-background-color: white;" text="Label" GridPane.columnIndex="1" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="103.0" style="-fx-background-color: #F7EEEC; -fx-border-color: black; -fx-border-width: 2.5;" text="Descripcion:" GridPane.rowIndex="1" />
+                  <Label fx:id="DescripcionLabel" style="-fx-background-color: white;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="103.0" style="-fx-background-color: #F7EEEC; -fx-border-color: black; -fx-border-width: 2.5;" text="Obras conocidas:" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#iraobras" prefWidth="70.0" text="Ver obras" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#eliminar" text="Eliminar autor" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
-            </Pane>
+            </GridPane>
          </items>
       </SplitPane>
    </children>

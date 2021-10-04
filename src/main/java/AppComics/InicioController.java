@@ -2,7 +2,6 @@ package AppComics;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
 
 import AppComics.utils.Utils;
 import javafx.fxml.FXML;
@@ -82,9 +81,9 @@ public class InicioController {
 
 	protected void initialize() {
 
-		String direccion = "src/main/resources/Imagenes/Logo/Logo.png";
+		String direccion = "src/main/resources/Imagenes/Logo/";
 		portada.setVisible(true);
-		File f = new File("file:" + direccion);
+		File f = new File("file:" + direccion+"logo.png");
 		System.out.println(direccion);
 		Image cportada = new Image(f.getPath());
 		portada.setImage(cportada);
